@@ -27,7 +27,7 @@ export default function NewCampaigenForm({
 
     setIsOpen(false);
     try {
-      api.post("campaign",SubmmitNewCampaigen).then(res=>res)
+      api.post("/campaign",SubmmitNewCampaigen).then(res=>res)
  
   
     } catch (Error) {
