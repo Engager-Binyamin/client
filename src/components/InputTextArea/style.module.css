@@ -8,17 +8,17 @@
     height: 166px;
     direction: rtl;
     text-align: right;
-    padding: 5px;
+    padding: 15px;
 }
 
 .textarea:hover {
-    border: 1px solid rgb(81, 81, 232);
+    border: 3px solid #DEE2E9;
 }
 
 .textarea:focus,
 .textarea:focus-visible,
 .textarea:focus-within,
 .textarea:active {
-    border: 1px solid rgb(11, 11, 255);
-    outline-color: rgb(11, 11, 255);
+    border: 1px solid #DEE2E9;
+    outline-color:#DEE2E9;
 }

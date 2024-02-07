@@ -21,6 +21,7 @@
 }
 
 .inputLine {
+    padding: 15px;
     width: 75vw;
     border: 1px solid #DEE2E9;
     width: 483px;
@@ -31,15 +32,15 @@
 }
 
 .inputLine:hover {
-    border: 3px solid rgb(81, 81, 232);
+    border: 3px solid #DEE2E9;
 }
 
 .inputLine:focus,
 .inputLine:focus-visible,
 .inputLine:focus-within,
 .inputLine:active {
-    border: 3px solid rgb(11, 11, 255);
-    outline-color: rgb(11, 11, 255);
+    border: 3px solid #DEE2E9;
+    outline-color: #DEE2E9;
 }
 
 .MsgName {
