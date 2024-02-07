@@ -6,48 +6,36 @@ import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
 import { toast } from "react-toastify";
 import React, { useState } from "react";
-import api from '../../functions/api'
 
 import api from '../../functions/api';
 
 
 export default function NewCampaigenForm({
   setIsOpen,
-  userid = { "_id": "65ba97e536d6af41e9beb0d1" }
+  _id = "65ba97e536d6af41e9beb0d1",
 }) {
-  const [user, setUser] = useState(userid);
+  const [user, setUser] = useState("");
   const [campName, setCampName] = useState("");
-  const [starterMsg, setStarterMsg] = useState("");
-  //***TODO: Starter Message*******/
-  //***TODO: Get User Id*******/
+  const [isVisible, setIsVisible] = useState(false);
 
   const handelSubmitNewCampaigen = async (e) => {
     e.preventDefault();
     const SubmmitNewCampaigen = {
-      "user": user,
-      "campName": campName
+      user: _id,
+      campName,
     };
 
     setIsOpen(false);
     try {
-      api.post("campaign" , SubmmitNewCampaigen).then(res=>res);
-      // const response = await axios.post(
-      //   "http://localhost:2500/campaign",
-
-      //  ,
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //   }
-      // );
-      console.log(response.data);
-      toast.success(response && "נשלח בהצלחה!");
-      console.log(user, campName);
+      api.post("campaign",SubmmitNewCampaigen).then(res=>res)
+ 
+  
     } catch (Error) {
       console.error("Error:", Error);
-      toast.error(Error?.response?.data?.msg || "something went wrong");
+      toast.error(Error?.response?.data?.msg || "somthing want worng");
+      console.log(user, campName);
     }
+    console.log(user, campName);
   };
 
   return (
@@ -65,7 +53,7 @@ export default function NewCampaigenForm({
             children={
               <InputText
                 name="campaignMsg"
-                onChange={(e) => setCampName(e.target.value)}
+                onChange={(e) => setUser(e.target.value)}
               />
             }
             type="text"
@@ -78,7 +66,7 @@ export default function NewCampaigenForm({
             children={
               <InputTextArea
                 name={"campaignTextArea"}
-                onChange={(e) => setStarterMsg(e.target.value)}
+                onChange={(e) => setCampName(e.target.value)}
               />
             }
             type="text"
