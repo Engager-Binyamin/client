@@ -13,7 +13,7 @@ import TabSwitcher from '../components/TabSwitcher';
 import NewCampaigenForm from '../components/NewCampaignForm';
 
 export default function Shaked() {
-  const { isOpen, setIsOpen } = useContext(DataContext);
+  const { user, setUser } = useContext(DataContext);
 
   // const [isOpen, setIsOpen] = useState(false);
 

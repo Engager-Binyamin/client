@@ -15,10 +15,15 @@ export default function SideBar() {
   const [searchTerm, setSearchTerm] = useState('')
   const [campaign, setCampaign] = useState([])
   const { isOpen, setIsOpen } = useContext(DataContext);
-  useEffect(() => {
+
+  const getCamp = ()=>{
     api.get("/campaign")
-      .then(res => {setCampaign(res); console.log(res)})
+    .then(res => {setCampaign(res); console.log(campaign.user)})
+  }
+  useEffect(() => {
+    getCamp()
   }, [])
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebartop}>
@@ -71,7 +76,7 @@ export default function SideBar() {
           //   }
           // ]
            />
-          <div className={styles.item} onClick={()=> setIsOpen(<NewCampaigenForm setIsOpen={setIsOpen}/>)}>
+          <div className={styles.item} onClick={()=> setIsOpen(<NewCampaigenForm setIsOpen={setIsOpen} getCamp={getCamp} />)}>
             <Icon nameIcon={'pluscircle'} nameColor={'create'}  />
             <Button className="create"
               content="רשימה חדשה"

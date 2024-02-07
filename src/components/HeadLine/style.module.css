@@ -5,8 +5,10 @@
     display: flex;
     align-items: center;
     min-height: 100px;
+    width: 100%;
     justify-content: space-between;
 }
+
 .title {
     color: #000000;
     font-family: 'Secular One', sans-serif;
@@ -33,5 +35,5 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    
+
 }

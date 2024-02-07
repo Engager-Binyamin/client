@@ -1,11 +1,12 @@
-.msgTab{
+.msgTab {
     display: flex;
     flex-direction: column;
-    width: 300px;
-    min-width: 300px;
+    /* width: 300px; */
+    max-width: 300px;
+    width: 100%;
     height: 100%;
     border-left: 2px solid var(--grayElement);
-    max-width: 410px;
+    /* max-width: 410px; */
     padding: 15px;
     gap: 10px;
 }

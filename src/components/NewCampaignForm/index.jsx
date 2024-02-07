@@ -5,40 +5,34 @@ import Button from "../Button";
 import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
 import { toast } from "react-toastify";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import api from '../../functions/api'
+import DataContext from "../../context/DataContext";
+import CampaignItem from "../CampaignItem";
 
-import api from "../../functions/api";
-
-export default function NewCampaigenForm({
-  setIsOpen,
-  userid ={"_id":"65ba97e536d6af41e9beb0d1"}
-}) {
-  const [user, setUser] = useState(userid);
+export default function NewCampaigenForm({ setIsOpen, getCamp, }) {
+  // const [user, setUser] = useState(userid);
+  const { user, setUser } = useContext(DataContext)
+  console.log("user", user)
   const [campName, setCampName] = useState("");
   const [isVisible, setIsVisible] = useState(false);
 
   const handelSubmitNewCampaigen = async (e) => {
     e.preventDefault();
-    const 
-    SubmmitNewCampaigen = {
-      "user":user,
-      "campName":campName
+    const SubmmitNewCampaigen = {
+      // "user": user,
+      "campName": campName,
+      "campaignTextArea": starterMsg
     };
 
     setIsOpen(false);
     try {
-      api.post("campaign", SubmmitNewCampaigen).then((res) => res)
-      // const response = await axios.post(
-      //   "http://localhost:2500/campaign",
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //   }
-      // );
-      console.log(response.data);
+      const response = await api.post("/campaign",
+        SubmmitNewCampaigen
+      );
       toast.success(response && "נשלח בהצלחה!");
       console.log(user, campName);
+      getCamp()
     } catch (Error) {
       console.error("Error:", Error);
       toast.error(Error?.response?.data?.msg || "somthing want worng");

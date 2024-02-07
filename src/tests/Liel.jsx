@@ -9,7 +9,7 @@ import UserLogoutEdit from '../components/UserLogoutEdit'
 export default function Liel() {
   let user = {
       name: "ליאל",
-      avatar: ".//public/user.jfif"
+      avatar: ""
     }
  
   return (
