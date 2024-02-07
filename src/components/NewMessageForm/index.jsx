@@ -6,6 +6,9 @@ import Button from "../Button";
 import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
 
+import api from '../../functions/api';
+
+
 import { FaTimes } from "react-icons/fa";
 import { useState } from "react";
 
@@ -23,15 +26,16 @@ export default function NewMassageForm({ setIsOpen }) {
 
     setIsOpen(false);
     try {
-      const response = await axios.post(
-        "http://localhost:2500/campaign/65c0939a5aa397278552a5b5/msg",
-        submmit,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      api.post("campaign" , submmit).then(res=>res);
+      // const response = await axios.post(
+      //   "http://localhost:2500/campaign/65c0939a5aa397278552a5b5/msg",
+      //   submmit,
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //   }
+      // );
       console.log(response.data);
       toast.success(response && "נשלח בהצלחה!");
       console.log(subject, content);
