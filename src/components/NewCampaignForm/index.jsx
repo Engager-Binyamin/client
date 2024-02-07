@@ -7,8 +7,7 @@ import InputTextArea from "../InputTextArea/index";
 import { toast } from "react-toastify";
 import React, { useState } from "react";
 
-import api from '../../functions/api';
-
+import api from "../../functions/api";
 
 export default function NewCampaigenForm({
   setIsOpen,
@@ -27,13 +26,21 @@ export default function NewCampaigenForm({
 
     setIsOpen(false);
     try {
-      api.post("/campaign",SubmmitNewCampaigen).then(res=>res)
- 
-  
+      api.post("/campaign", SubmmitNewCampaigen).then((res) => res);
+      // const response = await axios.post(
+      //   "http://localhost:2500/campaign",
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //   }
+      // );
+      // console.log(response.data);
+      toast.success(response && "נשלח בהצלחה!");
+      console.log(user, campName);
     } catch (Error) {
       console.error("Error:", Error);
       toast.error(Error?.response?.data?.msg || "somthing want worng");
-      console.log(user, campName);
     }
     console.log(user, campName);
   };
@@ -73,8 +80,8 @@ export default function NewCampaigenForm({
           />
           {/* onClick={ setIsOpen(false)}  */}
           <div className={styles.actions}>
-            <Button className={"cancel"} content={"ביטול"} />
             <Button className={"save"} content={"שמירה"} />
+            <Button className={"cancel"} content={"ביטול"} />
           </div>
         </main>
       </form>
