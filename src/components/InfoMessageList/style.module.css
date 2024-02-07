@@ -14,9 +14,7 @@
 .MessageList {
     display: flex;
     flex-direction: column;
-    align-items: end;
     width: 100%;
-    min-height: 552px;
     gap: 32px
 }
 

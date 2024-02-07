@@ -29,13 +29,12 @@
     background-color: inherit;
   }
 
-  
-.SortIcon {
-  position: absolute; /* Position the sort icon absolutely */
-  left: 10px; /* Adjust the left position */
-  top: 50%; /* Vertically center the sort icon */
-  transform: translateY(-50%);
-  color: gray;
-  cursor: pointer;
-}
+  .SortIcon {
+    position: absolute; /* Position the sort icon absolutely */
+    left: 10px; /* Adjust the right position */
+    top: 50%; /* Vertically center the sort icon */
+    transform: translateY(-50%);
+    color: gray;
+    cursor: pointer;
+  }
   

@@ -12,7 +12,7 @@
 
 
   .info {
-    /* width: 800px; */
+    width: 100%;
     /* min-width: 715px; */
     display: flex;
     flex-direction: column;
@@ -80,12 +80,12 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-
     border-radius: 8px;
     border: 1px solid var(--border-box-color);
   }
   .detailsFrame {
     /* margin: auto; */
+    width: 100%;
     flex-grow: 1;
     display: flex;
     justify-content: space-between;

@@ -1,5 +1,7 @@
 import { FaSearch, FaSortAlphaDown } from 'react-icons/fa';
 import styles from './style.module.css';
+import Popover from '../Popover/index';
+import { useState, useEffect } from 'react';
 // import Icon from '../../components/Icon'
 
 
@@ -15,16 +17,43 @@ import styles from './style.module.css';
 // searchTerm and setSearchTerm for managing search queries,
 // setSortType for toggling between sorting by name and date,
 // sortButton to display or hide the sorting button.
-export default function SearchBar({ searchTerm, setSearchTerm, setSortType, sortButton = false }) {
+export default function SearchBar({ searchTerm, setSearchTerm, setSortType, sortType, sortButton = false }) {
+
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
-  const handleSort = () => {
-    setSortType(prevSortType => prevSortType === 'name' ? 'date' : 'name');
+
+
+  const [list, setList] = useState([
+    { text: "תאריך הצטרפות", icon: '✅', onClick: () => handleSort() },
+    { text: " שם (א'-ת)", onClick: () => handleSort() }
+  ])
+
+  const handleSort = (type) => {
+    console.log(type);
+    setSortType(type);
   };
 
+  useEffect(() => {
+    if (sortType === 'date') {
+      setList([
+        { text: "תאריך הצטרפות", icon: '✅', onClick: () => handleSort('date') },
+        { text: " שם (א'-ת)", onClick: () => handleSort('name') }
+      ]);
+    } else if (sortType === 'name') {
+      setList([
+        { text: "תאריך הצטרפות", onClick: () => handleSort('date') },
+        { text: " שם (א'-ת)", icon: '✅', onClick: () => handleSort('name') }
+      ]);
+    }
+  }, [sortType])
+
+
+
+
+
   return (
-    <div className={styles.SearchBar}>
+    <div className={styles.SearchBar} >
       <input
         type="text"
         value={searchTerm}
@@ -32,9 +61,16 @@ export default function SearchBar({ searchTerm, setSearchTerm, setSortType, sort
         className={styles.Input}
       />
       {/* <Icon nameIcon={'search'} nameColor={''} className={styles.SearchIcon}/> */}
-      <FaSearch className={styles.SearchIcon} />
-      {sortButton && <FaSortAlphaDown className={styles.SortIcon} onClick={handleSort} />}
-    </div>
+      <FaSearch className={styles.SearchIcon} onClick={() => console.log(list)} />
+
+      {sortButton &&
+        <span className={styles.SortIcon} >
+          <Popover list={list} fnName='onClick' >
+            <FaSortAlphaDown className={styles.SortIcon} />
+          </Popover >
+        </span>
+      }
+    </div >
   );
 };
 

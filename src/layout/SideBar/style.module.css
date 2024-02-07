@@ -73,6 +73,12 @@ svg {
     line-height: 40px;
 }
 
+.newlist{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .item {
     display: flex;
     flex-wrap: nowrap;

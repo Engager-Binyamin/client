@@ -21,8 +21,11 @@
 
 .newMsg{
     height: 60px;
+    width: 90%;
     border-top: 2px solid var(--grayElement);
     padding: 5px;
+    position: absolute;
+    bottom: 0;
 }
 
 .item {

@@ -7,10 +7,12 @@
     border-left: 2px solid var(--grayElement);
     padding: 15px;
     gap: 10px;
+    position: relative;
 }
 
 .LeadListHolder{
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
+    width: 100%;
 }

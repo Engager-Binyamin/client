@@ -6,14 +6,10 @@
 }
 
 .item {
-    display: flex;
     width: 100%;
     padding: 0 5px;
     font-size: 18px;
     font-family: 'Heebo', sans-serif;
-    text-overflow:ellipsis;
-    overflow: hidden;
-    display:inline-block
 }
 
 .item:hover {

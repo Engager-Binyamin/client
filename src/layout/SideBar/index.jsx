@@ -57,25 +57,7 @@ export default function SideBar() {
       <div className={styles.lists} >
         <div className={styles.liststitle}>רשימות</div>
         <div className={styles.newlist} >
-          <CampaignList searchTerm={searchTerm} campaignList={campaign}
-          //   {
-          //     id: "65c0939a5aa397278552a5b5",
-          //     title: "קורס תפירה 2023_3"
-          //   },
-          //   {
-          //     id: "2",
-          //     title: "כפר נוער - גיוס תלמידים"
-          //   },
-          //   {
-          //     id: "3",
-          //     title: "מנויי חדר כושר גבעת שמואל הנביר"
-          //   },
-          //   {
-          //     id: "4",
-          //     title: "מנויי חדר כושר גבעת שמואל הנביר"
-          //   }
-          // ]
-           />
+          <CampaignList searchTerm={searchTerm} campaignList={campaign}/>
           <div className={styles.item} onClick={()=> setIsOpen(<NewCampaigenForm setIsOpen={setIsOpen} getCamp={getCamp} />)}>
             <Icon nameIcon={'pluscircle'} nameColor={'create'}  />
             <Button className="create"
@@ -92,3 +74,21 @@ export default function SideBar() {
     </div>
   )
 }
+
+//   {
+//     id: "65c0939a5aa397278552a5b5",
+//     title: "קורס תפירה 2023_3"
+//   },
+//   {
+//     id: "2",
+//     title: "כפר נוער - גיוס תלמידים"
+//   },
+//   {
+//     id: "3",
+//     title: "מנויי חדר כושר גבעת שמואל הנביר"
+//   },
+//   {
+//     id: "4",
+//     title: "מנויי חדר כושר גבעת שמואל הנביר"
+//   }
+// ]
