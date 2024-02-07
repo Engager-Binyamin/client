@@ -1,14 +1,15 @@
 .userInfo {
-    width: 320px;
-    height: 70px;
+    width: 200px;
+    min-height: 70px;
     padding: 17px, 20px, 17px, 20px;
-    border: 1px, 0px, 0px, 0px;
+    border: none;
     gap: 16px;
     display: flex;
     flex-wrap: wrap;
     align-content: center;
     justify-content: flex-end;
     align-items: center;
+    background-color: transparent;
 }
 
 
@@ -16,9 +17,15 @@
     /* position: absolute; */
     width: 36px;
     height: 36px;
-    left: 108px;
+    /* left:108px; */
     top: 0px;
     border-radius: 300px;
     /* padding-right: 10px; */
-    margin-right: 10px;
+    /* margin-right: 10px; */
+}
+
+.icon{
+    transform: rotate(180deg);
+    cursor: pointer;
+    background-color: transparent;
 }
