@@ -63,13 +63,13 @@ export default function Register() {
             <form className={styles.register} onSubmit={handleSubmit}>
 
                 <div className={styles.inputSpace}>
-                    <InputWrapper label={"שם"} >
+                    <InputWrapper label={"שם"} setIsVisible={true} >
                         <InputText name={'name'} required={true} onChange={handleChange} value={formState.name} />
                     </InputWrapper>
                 </div>
 
                 <div className={styles.inputSpace}>
-                    <InputWrapper label={"טלפון"} >
+                    <InputWrapper label={"טלפון"} setIsVisible={true} >
                         <InputText name={'phone'} required={true} onChange={handleChange} value={formState.phone} />
                         {errorForm.phone &&
                             <div className={styles.error}>{errorForm.phone}</div>}
@@ -77,7 +77,7 @@ export default function Register() {
                 </div>
 
                 <div className={styles.inputSpace}>
-                    <InputWrapper label={"אמייל"} >
+                    <InputWrapper label={"אמייל"} setIsVisible={true} >
                         <InputText type={'email'} name={'email'} required={true} onChange={handleChange} value={formState.email} />
                         {errorForm.email &&
                             <div className={styles.error}>{errorForm.email}</div>}
@@ -85,7 +85,7 @@ export default function Register() {
                 </div>
 
                 <div className={styles.inputSpace}>
-                    <InputWrapper label={"סיסמה"} >
+                    <InputWrapper label={"סיסמה"} setIsVisible={true} >
                         <InputText type={'password'} name={'password'} required={true} onChange={handleChange} value={formState.password} />
                         {errorForm.password &&
                             <div className={styles.error}>{errorForm.password}</div>}
@@ -93,7 +93,7 @@ export default function Register() {
                 </div>
 
                 <div className={styles.inputSpace}>
-                    <InputWrapper label={"אימות סיסמה"} >
+                    <InputWrapper label={"אימות סיסמה"} setIsVisible={true} >
                         <InputText type={'password'} name={'passwordConfirm'} required={true} onChange={handleChange} value={formState.passwordConfirm} />
                     </InputWrapper>
                     {errorForm.passwordConfirm &&

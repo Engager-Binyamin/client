@@ -7,6 +7,7 @@ import SearchBar from '../../components/SearchBar'
 import { useContext, useState } from 'react'
 import DataContext from '../../context/DataContext'
 import NewCampaigenForm from '../../components/NewCampaignForm'
+import FeedBack from '../../components/FeedBack'
 
 export default function SideBar() {
   const [displaySearchBar, setDisplaySearchBar] = useState(false)
@@ -35,17 +36,17 @@ export default function SideBar() {
               <Icon nameIcon={'setting'} nameColor={''} />
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/fidback">
+          {/* <li>
+            <NavLink to="/feedback">
               שליחת פידבק
               <Icon nameIcon={'thumbsup'} nameColor={''} />
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className={styles.lists} >
         <div className={styles.liststitle}>רשימות</div>
-        <div className={styles.newlist} >
+        <div className={styles.camplist} >
           <CampaignList searchTerm={searchTerm} campaignList={[
             {
               id: "65c0939a5aa397278552a5b5",

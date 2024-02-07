@@ -25,7 +25,7 @@ export default function HeadLine({ title, icon, dateCreate, children }) {
       <div >
         <p className={styles.title} >{title}</p>
         <p className={styles.subtitle} >נוצר ב {dateCreate}</p>
-      </div>
+      </div >
       <div onClick={handleEditClick}><Icon className={styles.button} nameIcon={"writing"} nameColor={''} /></div>
       
     </div>

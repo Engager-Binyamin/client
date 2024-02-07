@@ -7,11 +7,16 @@
 
 .item {
     display: flex;
-    min-width: 230px;
+    width: 287px;
     height: 37px;
     padding: 7px;
     font-size: 18px;
     font-family: 'Heebo', sans-serif;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    display:inline-block
+
+
 }
 
 .item:hover {
@@ -20,13 +25,15 @@
 }
 
 .nameitem {
+    width: 100%;
     justify-content: start;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow:ellipsis;
     text-align: right;
     background-color: transparent;
     direction: rtl;
+    display:inline-block
 }
 
 .active {

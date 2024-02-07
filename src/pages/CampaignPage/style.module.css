@@ -12,8 +12,16 @@
 
 .infoTab {
     width: 100%;
-    padding: 20px;
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 50px 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    gap: 25px;
+
+}
+
+.infoTab >div {
+    max-width: 800px;
+    margin: auto;
 }

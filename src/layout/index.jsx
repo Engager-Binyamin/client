@@ -14,14 +14,17 @@ export default function Layout() {
       <ManageContext>
         <Routes>
           <Route path='/login' element={<LoginPage />} />
-
+          <Route path='*' element={
+            <>
+              <SideBar />
+              <Content />
+            </>} />
         </Routes>
 
         <Test />
 
 
-        <SideBar />
-        <Content />
+
 
         <PopUp />
 

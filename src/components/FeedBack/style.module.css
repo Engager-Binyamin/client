@@ -1,0 +1,36 @@
+
+.InputWrapper {
+    justify-content: center;
+    display: flex;
+    padding:20px;
+
+
+}
+.asterisk{
+    color: red;
+}
+
+.input1 {
+    margin: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end
+}
+
+.label2 {
+    color: cadetblue;
+    margin: 5px;
+}
+
+.actions {
+    height: 40px;
+
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+
+    margin: 30px;
+}

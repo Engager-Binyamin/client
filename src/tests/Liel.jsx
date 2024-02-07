@@ -3,6 +3,7 @@ import CampaignList from '../components/CampaignList'
 import Login from '../components/Login/Login'
 import Register from '../components/Register'
 import HeadLine from '../components/HeadLine'
+import MessageEdit from '../components/MessageEdit'
 // import { data } from '../data/campaign.data.json'
 export default function Liel() {
   let data = [
@@ -18,8 +19,9 @@ export default function Liel() {
     <div>
       {/* <HeadLine title={"title"} subtitle={"subtitle"} />  */}
       {/* <CampaignList campaignList={data} /> */}
-      <Register/>
+      {/* <Register/> */}
       {/* <Login/> */}
+      {/* <MessageEdit/> */}
     </div>
   )
 }

@@ -3,128 +3,152 @@
 
   :root {
 
-      --font: 'Heebo', sans-serif;
-      --title-color: #000000;
-      --details-color: #E8E8E8;
-      --border-box-color: #F3F3F5;
+    --font: 'Heebo', sans-serif;
+    --title-color: #000000;
+    --details-color: #E8E8E8;
+    --border-box-color: #F3F3F5;
   }
 
 
 
-.info {
+  .info {
     /* width: 800px; */
     min-width: 715px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 37px;
-}
+    gap: 25px;
+  }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
 
-.details {
-  font-family: "Secular One", sans-serif;
-  font-size: 24px;
-  font-weight: 400;
-   text-align: right;
-  /*display: flex;
+  .details {
+    font-family: "Secular One", sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: right;
+    /*display: flex;
   flex-direction: column;
   justify-content: center; */
-}
+  }
 
-.isActive {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 5px;
-  color: #6B6B6B;
-  font-size: 18px;
-  font-weight: 400;
-}
+  .isActive {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    color: #6B6B6B;
+    font-size: 18px;
+    font-weight: 400;
+  }
 
-.edit {
-  font-size: 18px;
-}
+  .edit {
+    font-size: 18px;
+  }
 
-.edit:hover {
-  cursor: pointer;
-}
+  .edit:hover {
+    cursor: pointer;
+  }
 
-.greenDot {
-  width: 8px;
-  height: 8px;
-  background-color: #0DDEBB;
-  border-radius: 50%;
-  margin-left: 5px;
-}
+  .greenDot {
+    width: 8px;
+    height: 8px;
+    background-color: #0DDEBB;
+    border-radius: 50%;
+    margin-left: 5px;
+  }
 
-.redDot {
-  width: 8px;
-  height: 8px;
-  background-color: #de0d30;
-  border-radius: 50%;
-  margin-left: 5px;
-}
+  .redDot {
+    width: 8px;
+    height: 8px;
+    background-color: #de0d30;
+    border-radius: 50%;
+    margin-left: 5px;
+  }
 
-
-.detailsFrame {
+  .allFields{
+    position: relative;
     width: 100%;
-    min-width: 500px;
-    height: 353px;
-    padding: 45px;
+    padding: 30px 100px 50px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
     border-radius: 8px;
     border: 1px solid var(--border-box-color);
+  }
+  .detailsFrame {
+    /* margin: auto; */
+    flex-grow: 1;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
     background-color: #ffffff;
     gap: 20px;
-}
+  }
 
-table {
+  .infoCol{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    gap: 20px;
+  }
+
+  .infoFullCol{
+    /* background:red; */
     width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
+  }
 
-th {
+  .infoBlock {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .miniTitle {
     font-family: var(--font);
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: right;
     color: #000000;
     padding: 2px;
 
-}
+  }
 
-td {
+  .content {
     text-align: right;
-    font-size: 24px;
+    font-size: 22px;
+    font-weight: 700;
     font-family: var(--font);
 
-}
+  }
 
 
-.signUpDate {
+  .signUpDate {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
     font-family: var(--font);
     font-size: 12px;
     font-weight: 400;
     line-height: 14px;
     letter-spacing: 0em;
     text-align: right;
-}
+  }
 
 
-.sentMessagesContainer {
+  .sentMessagesContainer {
     width: 100%;
-    min-width: 500px;
-    height: 353px;
+    /* min-width: 500px; */
+    height: 370px;
     padding: 45px;
     border-radius: 8px;
     border: 1px solid var(--border-box-color);
@@ -133,19 +157,18 @@ td {
     align-items: flex-end;
     background-color: #F7F7F7;
 
-}
+  }
 
-.messages{
-  overflow: auto;
-  width: 100%;
+  .messages {
+    overflow: auto;
+    width: 100%;
 
-}
+  }
 
-.sentTitle{
-  font-family: var(--font);
-  font-size: 16px;
-  font-weight: 500;
-  text-align: right;
-  color: #000000;
-}
-
+  .sentTitle {
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: 500;
+    text-align: right;
+    color: #000000;
+  }

@@ -3,6 +3,7 @@
 .sidebar {
     background: #F7F7F7;
     width: 320px;
+    min-width: 320px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -54,9 +55,13 @@ svg {
 }
 
 .lists {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
     padding: 32px 20px;
     border-bottom: 2px solid var(--grayElement);
     border-top: 2px solid var(--grayElement);
+    gap: 8px;
 }
 
 .liststitle {
@@ -71,12 +76,10 @@ svg {
 .item {
     display: flex;
     flex-wrap: nowrap;
-    align-content: space-between;
+    align-items: center;
     line-height: 24px;
-    padding-right: 8px;
-    padding-top: 40px;
-    
-    
+    padding: 8px;
+    border-radius: 8px;
 }
 
 .item svg {
@@ -86,8 +89,15 @@ svg {
     border-radius: 50%;
 }
 
-.item:hover{
-cursor: pointer;
-background-color:var(--white-hover);
+.item:hover {
+    cursor: pointer;
+    background-color: var(--white-hover);
 
+}
+
+.camplist {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 30px;
 }
