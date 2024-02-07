@@ -76,8 +76,8 @@ export default function FeedBack({ setIsOpen, _id = "65ba97e536d6af41e9beb0d1" }
           />
           {/* onClick={ setIsOpen(false)}  */}
           <div className={styles.actions}>
-            <Button className={"save"} content={"שמירה"} />
             <Button className={"cancel"} content={"ביטול"} />
+            <Button className={"save"} content={"שמירה"} />
           </div>
         </main>
       </form>

@@ -12,13 +12,13 @@
 }
 
 .textarea:hover {
-    border: 3px solid #DEE2E9;
+    border: 2px solid #E8E8E8;
 }
 
 .textarea:focus,
 .textarea:focus-visible,
 .textarea:focus-within,
 .textarea:active {
-    border: 1px solid #DEE2E9;
-    outline-color:#DEE2E9;
+    border: 1px solid #E8E8E8;
+    outline-color:#E8E8E8;
 }

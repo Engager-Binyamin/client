@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .MessagePage {
-    /* width: 700px; */
+    min-width: 700px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -20,7 +20,7 @@
     font-size: 18px;
     padding: 30px 30px 20px 30px;
     display: flex;
-    justify-content: end;
+    justify-content: start;
     font-family: 'Heebo', sans-serif;
 }
 
@@ -29,6 +29,6 @@
     font-size: 12px;
     padding: 0 30px 30px 30px;
     display: flex;
-    justify-content: end;
+    justify-content: start;
     color: #6B6B6B;
 }

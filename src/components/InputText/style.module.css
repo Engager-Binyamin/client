@@ -33,15 +33,18 @@
 }
 
 .inputLine:hover {
-    border: 3px solid #DEE2E9;
+    border: 2px solid #E8E8E8;
+        /* Please don't change the color!!! */
+
 }
 
 .inputLine:focus,
 .inputLine:focus-visible,
 .inputLine:focus-within,
 .inputLine:active {
-    border: 3px solid #DEE2E9;
-    outline-color: #DEE2E9;
+    border: 2px solid #E8E8E8;
+    outline-color: #E8E8E8;
+    /* Please don't change the color!!! */
 }
 
 .MsgName {

@@ -73,8 +73,8 @@ export default function NewCampaigenForm({
           />
           {/* onClick={ setIsOpen(false)}  */}
           <div className={styles.actions}>
-            <Button className={"save"} content={"שמירה"} />
             <Button className={"cancel"} content={"ביטול"} />
+            <Button className={"save"} content={"שמירה"} />
           </div>
         </main>
       </form>

@@ -41,8 +41,8 @@ export default function MessageEdit({ isOpen, setIsOpen }) {
                         type="text" />
                 </main>
                 <div className={styles.actions}  >
-                    <Button className={"save"} content={"שמירה"} />
                     <Button className={"cancel"} content={"ביטול"} onClick={() => setIsOpen(false)} />
+                    <Button className={"save"} content={"שמירה"} />
                 </div>
             </form>
         </div>

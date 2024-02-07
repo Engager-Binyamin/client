@@ -26,11 +26,11 @@ export default function MessagePage() {
                     {content}
                 </div>
                 <div className={styles.messageDate}>
-                    ישלח ב {"dateSend"} | {"timeSend"}
+                    יישלח ב-{"dateSend"} | {"timeSend"}
                 </div>
             </div>
             <Accordion
-                title={`נשלח ל${campaignHelper.msgSentLeads(campaign, message._id)[1]} אנשים`}
+                title={`נשלח ל-${campaignHelper.msgSentLeads(campaign, message._id)[1]} אנשים`}
                 campaignId={campaign._id}>
                 {campaignHelper.msgSentLeads(campaign, message._id)[0]}
                 {/* {console.log(campaign)} */}
