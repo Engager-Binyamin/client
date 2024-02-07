@@ -11,22 +11,23 @@ import api from "../../functions/api";
 
 export default function NewCampaigenForm({
   setIsOpen,
-  _id = "65ba97e536d6af41e9beb0d1",
+  userid ={"_id":"65ba97e536d6af41e9beb0d1"}
 }) {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(userid);
   const [campName, setCampName] = useState("");
   const [isVisible, setIsVisible] = useState(false);
 
   const handelSubmitNewCampaigen = async (e) => {
     e.preventDefault();
-    const SubmmitNewCampaigen = {
-      user: _id,
-      campName,
+    const 
+    SubmmitNewCampaigen = {
+      "user":user,
+      "campName":campName
     };
 
     setIsOpen(false);
     try {
-      api.post("/campaign", SubmmitNewCampaigen).then((res) => res);
+      api.post("campaign", SubmmitNewCampaigen).then((res) => res)
       // const response = await axios.post(
       //   "http://localhost:2500/campaign",
       //   {
@@ -35,7 +36,7 @@ export default function NewCampaigenForm({
       //     },
       //   }
       // );
-      // console.log(response.data);
+      console.log(response.data);
       toast.success(response && "נשלח בהצלחה!");
       console.log(user, campName);
     } catch (Error) {
