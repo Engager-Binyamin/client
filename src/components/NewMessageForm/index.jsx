@@ -25,6 +25,7 @@ export default function NewMassageForm({ setIsOpen }) {
     const submmit = { subject, content };
 
     setIsOpen(false);
+    
     try {
       api.post("campaign" , submmit).then(res=>res);
       // const response = await axios.post(
