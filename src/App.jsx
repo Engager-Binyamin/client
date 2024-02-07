@@ -9,6 +9,7 @@ export default function App() {
 
   return (
     <div>
+
       <Layout />
       <ToastContainer
         position="bottom-right"
@@ -21,8 +22,8 @@ export default function App() {
         draggable
         pauseOnHover
         theme="light"
-        // transition: 'Bounce'
-        />
+      // transition: 'Bounce'
+      />
       {/* <button onClick={notify}>Notify!</button> */}
     </div>
   )

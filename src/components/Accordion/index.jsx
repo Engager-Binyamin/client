@@ -59,7 +59,7 @@ export default function Accordion({ title, children, campaignId }) {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={isOpenAcord ? styles.wrapper : styles.closeWrapper}>
       <div className={styles.container}>
         <div className={styles.header} onClick={toggleAccordion}>
           <div>
@@ -67,21 +67,19 @@ export default function Accordion({ title, children, campaignId }) {
           </div>
           <span className={styles.title}>{title}</span>
         </div>
-        {isOpenAcord && (
-          <div className={styles.content}>
-            {children.map((lead, index) => (
-              <div className={styles.single} key={index}>
-                <LeadItem
-                  campaignId={campaignId}
-                  name={"lead.name"}
-                  email={lead.email}
-                  date={formatDate(lead.receptionDate)}
-                  id={lead._id} />
-                {console.log(lead.name)}
-              </div>
-            ))}
-          </div>
-        )}
+        <div className={styles.content}>
+          {children.map((lead, index) => (
+            <div className={styles.single} key={index}>
+              <LeadItem
+                campaignId={campaignId}
+                name={"lead.name"}
+                email={lead.email}
+                date={formatDate(lead.receptionDate)}
+                id={lead._id} />
+              {console.log(lead.name)}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

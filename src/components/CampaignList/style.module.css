@@ -3,7 +3,7 @@
 .campaignList {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
     max-width: 300px;
     min-height: 100px;
     float: right;

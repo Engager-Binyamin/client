@@ -8,7 +8,7 @@ export default function CampaignList({ campaignList, searchTerm }) {
                 {campaignList
                     .filter(c =>
                         c.title.toLowerCase().includes(searchTerm.toLowerCase()))
-                    .map(c => <CampaignItem key={c.id} id={c.id} title={c.title} />)}
+                    .map(c => <CampaignItem key={c.id} id={c._id} title={c.title} />)}
             </div>
     )
 }

@@ -46,10 +46,6 @@
       background-color: #fafafa;
   }
 
-  .message:active .activeIcon {
-      color: #0E9D85;
-  }
-
 
   /* square and icon in the box */
   .square {

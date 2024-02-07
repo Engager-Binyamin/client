@@ -29,6 +29,7 @@
     border-radius: 8px;
     direction: rtl;
     text-align: right;
+    padding: 5px;
 }
 
 .inputLine:hover {

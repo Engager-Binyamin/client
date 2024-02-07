@@ -5,8 +5,9 @@ import styles from './style.module.css'
 import InputTextArea from '../InputTextArea'
 import Button from '../Button'
 import axios from 'axios'
+import api from '../../functions/api'
 
-export default function UpdateAndAddLead({ details, campaign }) {
+export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
     const [workOrFinally, setWorkOrFinally] = useState('work')
     const [editOrAdd, setEditOrAdd] = useState()
     const [erorrState, setErorrState] = useState()
@@ -30,6 +31,10 @@ export default function UpdateAndAddLead({ details, campaign }) {
 
     }
 
+    function handleCancel() {
+        // setשהגיע בפרופס 
+    }
+
     function isValidIsraeliPhoneNumber(phoneNumber) {
         // Israeli phone number regex pattern
         const regexPattern = /^(0(5[^67]|[23489]))([\d]{7})$/;
@@ -37,14 +42,15 @@ export default function UpdateAndAddLead({ details, campaign }) {
         return regexPattern.test(phoneNumber);
     }
 
-    const handleOnSubmit = async (e) => {
+ const handleOnSubmit = async (e) => {
         e.preventDefault()
         if (!isValidIsraeliPhoneNumber(newData.phone)) {
             setErorrState('מספר הטלפון לא תקין ')
         } else {
             setErorrState()
             if (editOrAdd == 'add') {
-                axios.post('http://localhost:2500/lead/', { data: { ...newData, campaign: campaign } })
+                // axios.post('http://localhost:2500/lead/', { data: { ...newData, campaign: campaign } })
+                api.post('/lead/', { data: { ...newData, campaign: campaign } })
                     .then(setWorkOrFinally('finally'))
             } else {
                 if (Object.keys(newData).includes('phone')) {
@@ -55,20 +61,22 @@ export default function UpdateAndAddLead({ details, campaign }) {
                         console.log('😓😓😓😓');
                     }
                 }
-                axios.put(`http://localhost:2500/lead/${details.leadId}`, newData)
+                // axios.put(`http://localhost:2500/lead/${details.leadId}`, newData)
+                api.put('/lead/' + details.leadId, newData)
                     .then(res => {
                         console.log('🧸' + res.data)
                         setWorkOrFinally('finally')
                     })
-                    .catch(e => { console.log("🚛luliau", e.response.data);
-                    if(e.response.data == "phoneExist"){
-                        setErorrState( 'מספר הטלפון כבר קיים במערכת')
-                    }
-                     })
+                    .catch(e => {
+                        console.log("🚛luliau", e.response.data);
+                        if (e.response.data == "phoneExist") {
+                            setErorrState('מספר הטלפון כבר קיים במערכת')
+                        }
+                    })
             }
         }
-
     }
+
 
 
     return <div className={styles.contanier} >
@@ -86,7 +94,8 @@ export default function UpdateAndAddLead({ details, campaign }) {
                 <InputWrapper label={'הערות'} children={<InputTextArea name='notes' style={{ width: "100%" }} value={newData.notes} onChange={(e) => handleChange(e)} />} />
                 <div className={styles.buttons}>
                     <Button content='שמירה' />
-                    <Button content='ביטול' className='cancel' />
+                    <Button content='ביטול' className='cancel' onClick={()=>{setIsEdite(false)}} />
+
                 </div>
             </form>
             :

@@ -1,7 +1,8 @@
 .msgTab{
     display: flex;
     flex-direction: column;
-    width: 410px;
+    width: 300px;
+    min-width: 300px;
     height: 100%;
     border-left: 2px solid var(--grayElement);
     max-width: 410px;

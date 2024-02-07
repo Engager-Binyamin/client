@@ -8,6 +8,7 @@
 
     --green-hover: #0B7D6A;
     --white-hover: #E5E5E5;
+    --gray-hover: #ccc;
 
     --button-font: 'Heebo', sans-serif;
 
@@ -34,7 +35,7 @@
 }
 
 .cancel  {
-    background-color:var(--white-color);
+    background-color:var(--white-hover);
     gap: 6px;
     Width: 115px;
     Height: 55px;
@@ -50,7 +51,8 @@
 }
 
 .cancel:hover {
-    background-color:var(--white-hover);
+    background-color:var(--gray-hover);
+    color: #444;
 }
 
 .create {

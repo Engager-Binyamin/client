@@ -1,10 +1,22 @@
 .wrapper {
-  animation: slideIn 0.7s ease-in-out backwards;
+  height: 336px;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   background-color: #f7f7f7;
   margin: 30px 0 0 0;
+  transition: 0.3s ease-in-out;
+}
+
+.closeWrapper {
+  height: 80px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  background-color: #f7f7f7;
+  margin: 30px 0 0 0;
+  transition: 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 .container {
@@ -17,7 +29,7 @@
 }
 
 .header {
-  padding: 10px;
+  padding: 7px 20px 20px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,60 +42,34 @@
   font-weight: 600;
 }
 
+.content {
+  margin: 0 10px 0 10px;
+  border-radius: 5px;
+  max-height: 250px;
+  overflow-y: scroll;
+  direction: ltr;
+}
 
-@keyframes slideIn {
-  0% {
-    height: 0px;
-    opacity: 0;
-  }
-  
-  100% {
-    height: 100px;
-    opacity: 1;
-    
-  }
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background-color: #0E9D85;
+  border-radius: 5px;
+  border: 2px solid #f7f7f7;
 }
 
 .hide {
-  animation: slideOut 0.3s ease-in-out forwards;
+  display: none;
 }
-
-@keyframes slideOut {
-
-  0% {
-    height: 100px;
-    opacity: 1;
-    overflow: hidden;
-
-  }
-
-  100% {
-    height: 0px;
-    opacity: 0;
-    display: none;
-  }
-}
-
-.content {
-  padding: 10px;
-  max-height: 250px;
-  overflow-y: scroll;
-  /* overflow-y: auto; */
-}
-
-
-.content .hide {
-  height: 0;
-  transition: 0.3s all ease-in-out;
-}
-
-::-webkit-scrollbar {
-  width: 0px;
-}
-
 
 .single {
-  animation: slideIn 0.3s ease-in-out;
   display: flex;
   justify-content: end;
   margin: 1px;
@@ -92,32 +78,11 @@
   align-items: center;
 }
 
-
 .open {
   display: flex;
   flex-direction: row;
   align-items: center;
   font-size: 13.5px;
   font-weight: 500;
-  color: #6b6b6b;
   gap: 10px;
 }
-
-.content::-webkit-scrollbar {
-  width: 10px;
-}
-
-.content::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.content::-webkit-scrollbar-thumb {
-  background: transparent;
-  border-radius: 5px;
-}
-/* 
-.icon{
-  display: flex;
-  justify-content: center;
-  background-color: #F7F7F7;
-} */

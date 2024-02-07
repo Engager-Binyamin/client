@@ -1,0 +1,54 @@
+.datePicker {
+    width: 152px;
+    height: 34px;
+    border: 1px solid #DEE2E9;
+    border-radius: 8px;
+    color: #6B6B6B;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 34px;
+    text-align: right;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding:0px, 8px, 0px, 8px;
+   }
+
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    
+}
+input[type="date"]:focus {
+   outline: none;
+    
+}
+
+.Calendar{
+    width: 87px; ;
+    height: 34px;
+    border: 1px solid #DEE2E9;
+    outline: 'none';
+    color: #6B6B6B;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 34px;
+    text-align: right;
+    
+    
+}
+.text{
+    width: 87px;
+    border: none;
+    color: #6B6B6B;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 34px;
+    text-align: right;
+}
+.icon{
+    width: 24px;
+    height: 24px;
+}

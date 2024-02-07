@@ -1,7 +1,8 @@
 .leadsTab{
     display: flex;
     flex-direction: column;
-    width: 410px;
+    width: 300px;
+    min-width: 300px;
     height: 100%;
     border-left: 2px solid var(--grayElement);
     padding: 15px;
@@ -11,4 +12,5 @@
 .LeadListHolder{
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 }

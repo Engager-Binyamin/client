@@ -14,18 +14,24 @@ This will automatically apply the specified font family, size, weight, and color
 
   /* Setting up CSS variables for easy font management */
 
-  --default-font: 'Heebo', sans-serif; /* Default font for body text */
-  --font-size: 18px; /* Default font size for body text */
-  --font-weight: 400; /* Default font weight for body text */
+  --default-font: 'Heebo', sans-serif;
+  /* Default font for body text */
+  --font-size: 18px;
+  /* Default font size for body text */
+  --font-weight: 400;
+  /* Default font weight for body text */
 
 
- /* Specific font for main headings */
+  /* Specific font for main headings */
 
   --header-font: 'Secular One', sans-serif;
-  --header-font-size: 24px; /* Font size for main headings (h1) */
-  --header-font-weight: 400; /* Font weight for main headings (h1) */
-  --header-color: #000000; /* Text color for main headings (h1), set to black */
-  --test-border: 2px solid black; 
+  --header-font-size: 24px;
+  /* Font size for main headings (h1) */
+  --header-font-weight: 400;
+  /* Font weight for main headings (h1) */
+  --header-color: #000000;
+  /* Text color for main headings (h1), set to black */
+  --test-border: 2px solid black;
   --grayElement: rgb(232, 232, 232);
 }
 
@@ -37,9 +43,12 @@ This will automatically apply the specified font family, size, weight, and color
 
   /* Applying global fonts styles to all elements */
 
-  font-family: var(--default-font); /* Applying the default font */
-  font-size: var(--font-size); /* Applying the default font size */
-  font-weight: var(--font-weight); /* Applying the default font weight */
+  font-family: var(--default-font);
+  /* Applying the default font */
+  font-size: var(--font-size);
+  /* Applying the default font size */
+  font-weight: var(--font-weight);
+  /* Applying the default font weight */
 }
 
 /* Style rule for main headings (h1) */
@@ -51,3 +60,15 @@ h1 {
   color: var(--header-color); /* Use this CSS variable for the h1 text color */
 }
 
+::-webkit-scrollbar-thumb {
+  background-color: #0E9D85; /* Set thumb color */
+  border-radius: 5px; /* Round the corners */
+  border: 2px solid #f7f7f7; 
+}
+::-webkit-scrollbar-track {
+  background-color: #ffffff; 
+  border-radius: 10px; /* Round the corners */
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    }

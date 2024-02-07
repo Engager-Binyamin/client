@@ -11,7 +11,7 @@ console.log(isProduction);
 const mainApi = async (method, path, data, headers) => {
   try {
     let fainlPath = path.startsWith("/") ? path.slice(1) : path;
-    let auth = localStorage.token ? { Authorization: `Bearer ${localStorage.token}` } : {};
+    let auth = localStorage.token ? { Authorization: localStorage.token } : {};
 
     let baseUrl = isProduction==='true'  ? 'http://localhost:2500/' : 'https://engager-g262.onrender.com/'
 

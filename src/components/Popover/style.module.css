@@ -1,69 +1,35 @@
+.Popover {
+    background-color: #FFFFFF;
+    width: 209px;
+    padding: 10px;
+    display: flex;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    border-radius: 10px;
+    list-style-type: none;
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
-
-.container {
-    position: fixed;
+.Popover ul {
     display: flex;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.262);
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-
+    list-style: none;
+    gap: 5px;
+    padding: 5px;
+    justify-content: space-around
 }
 
-@keyframes slideIn {
-    0% {
-        transform: scale(0.9);
-        opacity: 0;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
-
-    }
-}
-
-.popup {
-    /* width: 400px; */
-    /* height: 400px; */
+.Popover li {
+    height: 50px;
+    padding: 12px;
     display: flex;
-    flex-direction: column;
-    background-color: rgb(255, 255, 255);
-    align-self: center;
-    position: relative;
-    animation: slideIn 0.3s ease-in-out;
-    padding: 15px;
-    /* margin: 10px; */
-}
-
-.top {
+    justify-content: flex-end;
     align-items: center;
-    /* border-bottom: 1px solid #E8E8E8; */
-    justify-content: space-between;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px 20px 10px 20px;
 }
 
-.close {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-}
-
-/* 
-.title {
-    margin: 20px;
-    font-family: 'Secular One', sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 29px;
-    letter-spacing: 0em;
+.Popover li .icon {
+    width: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-
-} */
+}

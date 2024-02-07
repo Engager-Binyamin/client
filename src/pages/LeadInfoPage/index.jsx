@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Icon from '../../components/Icon'
 import InfoMessageList from '../../components/InfoMessageList'
 import styles from './style.module.css'
+import UpdateAndAddLead from '../../components/UpdateAndAddLead'
 
 
 // Description: This component serves as a user profile page. It is designed to display user information, including first name, last name, email, phone number, registration date, and active status indicator.
@@ -17,7 +18,10 @@ import styles from './style.module.css'
 //    If isActive is true, it will display "פעיל"; if false, it will display a red dot and "לא פעיל"
 // Creator: Refael
 
-export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "Maiores itaque recusandae repellat provident ea praesentium officiis dignissimos atque ad vero architecto, fuga laborum sintprae sentium officiis dignissimos atque ad vero architecto, fuga laborum sint", signUpDate = "12/03/22", isActive = true }) {
+export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber = "054-8104093", email = "email@gmail.com", notes = "Maiores itaque recusandae repellat provident ea praesentium officiis dignissimos atque ad vero architecto, fuga laborum sintprae sentium officiis dignissimos atque ad vero architecto, fuga laborum sint", signUpDate = "12/03/22", isActive = true, campaignId, id  }) {
+
+
+
 
   //****************************************************************************
 
@@ -38,7 +42,7 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
       {isEdit ? (
         <>
           {/* ***TODO: Add edit component*** */}
-          <LeadEdit userDetils={userDetils} setIsEdite={setIsEdite} />
+          <UpdateAndAddLead details = {{name:name, email:email, phone:phoneNumber, notes:notes, leadId:id}} setIsEdite={setIsEdite} />
           <div className={styles.editPage}></div></>)
         : (<>
           <div className={styles.info}>
@@ -62,6 +66,26 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
               <div onClick={handleEditClick} className={styles.edit}><Icon nameIcon={'writing'}
                 nameColor={''} />  </div>
             </div>
+            <div className={styles.detailsFrame}>
+              
+              
+              <div className={styles.name}>
+                <div>שם</div>
+                <div>{name}</div>
+              </div>
+
+
+              <div className={styles.telAndEmail}>
+                <div>
+                  <div>טלפון</div>
+                  <div>{phoneNumber}</div>
+                </div>
+
+
+                <div>
+                  <div>אימייל</div>
+                  <div>{email}</div>
+                </div>
             <div className={styles.allFields}>
               <div className={styles.detailsFrame}>
                 <div className={styles.infoCol}>
@@ -87,6 +111,13 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
                   </div>
                 </div>
               </div>
+                <div>
+                  <div colSpan="2">הערות</div>
+                  <div colSpan="2" >{notes}</div>
+                </div>
+
+
+
               <div className={styles.signUpDate}>
                 תאריך ההצטרפות: {signUpDate}
 
@@ -96,6 +127,9 @@ export default function LeadInfoPage({ name = "יעקב הנוכל", phoneNumber
           <div className={styles.signUpDate}>
             תאריך ההצטרפות: {signUpDate}
           </div>
+            </div>
+          </div>
+
           <div className={styles.sentMessagesContainer}>
             <div className={styles.sentTitle}>הודעות שנשלחו</div>
             {/* ***TODO: make it only sent messages*** */}

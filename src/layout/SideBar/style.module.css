@@ -2,8 +2,8 @@
 
 .sidebar {
     background: #F7F7F7;
-    width: 320px;
-    min-width: 320px;
+    width: 240px;
+    min-width: 240px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;

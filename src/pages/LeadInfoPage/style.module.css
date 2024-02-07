@@ -13,7 +13,7 @@
 
   .info {
     /* width: 800px; */
-    min-width: 715px;
+    /* min-width: 715px; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -75,7 +75,7 @@
   .allFields{
     position: relative;
     width: 100%;
-    padding: 30px 100px 50px 100px;
+    padding: 30px 100px 60px 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -93,6 +93,13 @@
     background-color: #ffffff;
     gap: 20px;
   }
+
+.telAndEmail{
+  display: flex;
+  flex-direction: row;
+
+
+}
 
   .infoCol{
     width: fit-content;
@@ -134,8 +141,8 @@
 
   .signUpDate {
     position: absolute;
-    left: 10px;
-    bottom: 10px;
+    left: 20px;
+    bottom: 20px;
     font-family: var(--font);
     font-size: 12px;
     font-weight: 400;
@@ -147,15 +154,14 @@
 
   .sentMessagesContainer {
     width: 100%;
-    /* min-width: 500px; */
-    height: 370px;
-    padding: 45px;
+    height: 280px;
+    padding: 20px 40px;
     border-radius: 8px;
     border: 1px solid var(--border-box-color);
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
     background-color: #F7F7F7;
+    gap: 10px;
 
   }
 
@@ -168,7 +174,7 @@
   .sentTitle {
     font-family: var(--font);
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: right;
     color: #000000;
   }

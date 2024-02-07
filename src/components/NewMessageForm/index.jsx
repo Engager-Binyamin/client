@@ -63,7 +63,8 @@ export default function NewMassageForm({ setIsOpen }) {
             }
             type="text"
           ></InputWrapper>
-
+  <br />
+  <br />
           <InputWrapper
             label="הודעה"
             subLabel="זוהי  ההודעה שתשלח בתזמון הנבחר"

@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './style.module.css'
 import InputText from '../InputText/InputText'
 import Button from '../Button'
 import InputWrapper from '../InputWrapper'
 import { useState } from 'react'
+import axios from 'axios'
+import api from '../../functions/api'
+import DataContext from '../../context/DataContext'
+import { useNavigate } from 'react-router'
 
 
 // login page.
@@ -12,11 +16,24 @@ import { useState } from 'react'
 export default function Login() {
 
     const [formState, setFormState] = useState({})
-
+    const { user, setUser } = useContext(DataContext)
+const nav =useNavigate()
     async function handleSubmit(e) {
-        e.preventDefault();
-
+        try {
+            e.preventDefault();
+            const { token, user } = await api.post("/login", formState);
+            setUser(user)
+            console.log(user)
+            localStorage.token = token
+            nav("/")
+            // console.log("localStorage", localStorage)
+        } catch (err) {
+            console.log({ err })
+        }
     }
+    // console.log(formState)
+    // console.log(localStorage.token)
+
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -24,7 +41,7 @@ export default function Login() {
             const newData = { ...old, [name]: value }
             localStorage.user = JSON.stringify({ ...newData, password: '' })
             if ((newData.passwordConfirm) != (newData.password)) {
-                console.log(newData.name);
+                // console.log(newData);
             }
             return newData
         })
@@ -33,7 +50,7 @@ export default function Login() {
 
 
     return (
-        <form className={styles.loginDiv}>
+        <form onSubmit={handleSubmit} className={styles.loginDiv}>
 
             <div className={styles.inputSpace}>
                 <InputWrapper label={"טלפון"}>

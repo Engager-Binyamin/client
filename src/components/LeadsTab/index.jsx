@@ -26,10 +26,9 @@ export default function LeadsTab() {
         { tab: `campaign/${campaign._id}/leads`, text: `נרשמים(${campaign.leads.length})` },
         { tab: `campaign/${campaign._id}/messages`, text: "הודעות" }
       ]} />
-       
-      <div className={styles.LeadListHolder}>
-        <SearchBar sortType={sortType} setSortType={setSortType} searchTerm={searchTerm} setSearchTerm={setSearchTerm} sortButton={true} />
 
+      <SearchBar sortType={sortType} setSortType={setSortType} searchTerm={searchTerm} setSearchTerm={setSearchTerm} sortButton={true} />
+      <div className={styles.LeadListHolder}>
         <LeadList sortType={sortType} searchTerm={searchTerm} />
       </div>
     </div>
