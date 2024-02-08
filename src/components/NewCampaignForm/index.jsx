@@ -10,7 +10,7 @@ import api from '../../functions/api'
 import DataContext from "../../context/DataContext";
 import CampaignItem from "../CampaignItem";
 
-export default function NewCampaigenForm({ setIsOpen, getCamp, }) {
+export default function NewCampaigenForm({ setIsOpen, getCamp }) {
   // const [user, setUser] = useState(userid);
   const { user, setUser } = useContext(DataContext)
   console.log("user", user)
@@ -19,19 +19,19 @@ export default function NewCampaigenForm({ setIsOpen, getCamp, }) {
 
   const handelSubmitNewCampaigen = async (e) => {
     e.preventDefault();
-    const SubmmitNewCampaigen = {
+    const body = {
       // "user": user,
       "campName": campName,
-      "campaignTextArea": starterMsg
+      "starterMsg": starterMsg      
     };
 
     setIsOpen(false);
     try {
       const response = await api.post("/campaign",
-        SubmmitNewCampaigen
+        body
       );
       toast.success(response && "נשלח בהצלחה!");
-      console.log(user, campName);
+      console.log(user, campName , starterMsg);
       getCamp()
     } catch (Error) {
       console.error("Error:", Error);
@@ -60,9 +60,8 @@ export default function NewCampaigenForm({ setIsOpen, getCamp, }) {
             }
             type="text"
           />
-
-          
-
+<br />
+<br />
           <InputWrapper
             label={"הודעת אפס"}
             subLabel={"זוהי ההודעה שתשלח אוטומטית לכל מצטרף חדש לרשימה"}

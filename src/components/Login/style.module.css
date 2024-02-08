@@ -6,10 +6,7 @@
     font-family: 'Heebo';
 }
 
-.inputSpace {
-    margin: 10px 30px 30px 30px;
-    /* border: 2px solid darkcyan; */
-}
+
 
 .button {
     display: flex;
@@ -26,16 +23,16 @@
 }
 
 .loginDiv {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
+    /* display: flex; */
+    /* flex-wrap: nowrap; */
+    /* justify-content: space-evenly; */
     height: 350px;
-    width: fit-content;
+    /* width: fit-content; */
     /* text-align: center; */
-    text-align: end;
+    /* text-align: end; */
     /* border: 1px solid #DEE2E9; */
     /* border-radius: 8px; */
-    padding: 1rem;
+    padding: 2rem;
     /* align-items: center; */
     flex-direction: column;
     /* margin: 0 60px; */

@@ -11,15 +11,18 @@ import api from '../../functions/api';
 
 import { FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import api from "../../functions/api";
+import { useParams } from "react-router";
+import { toast } from "react-toastify";
 
 // Description :
 // Props : ____________ , _________
 // Creator : ________
 
-export default function NewMassageForm({ setIsOpen }) {
+export default function NewMassageForm({ setIsOpen,  campId , getCamp}) {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
-
+console.log({getCamp});
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submmit = { subject, content };
@@ -27,23 +30,15 @@ export default function NewMassageForm({ setIsOpen }) {
     setIsOpen(false);
     
     try {
-      api.post("campaign" , submmit).then(res=>res);
-      // const response = await axios.post(
-      //   "http://localhost:2500/campaign/65c0939a5aa397278552a5b5/msg",
-      //   submmit,
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //   }
-      // );
-      console.log(response.data);
+      const response = await api.post(
+        `/campaign/${campId}/messages`,
+        submmit
+      );
       toast.success(response && "נשלח בהצלחה!");
-      console.log(subject, content);
+      getCamp()
     } catch (error) {
       console.error("Error:", error);
     }
-    console.log(subject, content);
   };
 
   return (

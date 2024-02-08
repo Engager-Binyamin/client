@@ -2,11 +2,7 @@
 
 .button {
     display: flex;
-    /* כדי לאפשר שבר לשורות חדשות */
-    /* flex-wrap: wrap; */
-    /* כדי ליישר את האלמנטים אנכית */
     align-items: center;
-    /* כדי ליישר את האלמנטים אופקית */
     justify-content: space-between;
     padding: 1rem;
 
@@ -27,30 +23,10 @@
     display: flex;
 }
 
-.centerDiv {
-    margin: 0;
-    display: grid;
-    place-items: center;
-    height: 100vh;
-}
+
 
 .register {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    min-height: 300px;
-    width: fit-content;
-    text-align: end;
-    padding: 1rem;
-    border: 1px solid #DEE2E9;
-    border-radius: 8px;
-    /* align-items: center; */
-    flex-direction: column;
-    /* margin: 0 60px; */
-}
-
-.star{
-color: red;
+    padding: 2rem;
 }
 
 .error {

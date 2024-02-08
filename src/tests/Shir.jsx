@@ -1,8 +1,9 @@
 import React from 'react'
 
-
+import Timing from '../components/Timing'
 import TimePicker from '../components/TimePicker';
 import DatePicker from '../components/DatePicker';
+import NewMassageForm from '../components/NewMessageForm';
 
 
 
@@ -10,9 +11,8 @@ import DatePicker from '../components/DatePicker';
 export default function Shir() {
   return (
     <div>
-     
-     <TimePicker />
-     <DatePicker/>
-    </div>
+       <NewMassageForm/> 
+     <Timing/>
+      </div>
   )
 }

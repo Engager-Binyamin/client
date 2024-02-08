@@ -3,10 +3,13 @@ import MessageList from '../MessageList'
 import Button from '../Button'
 import SearchBar from '../SearchBar'
 import PopUp from '../PopUp'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import NewMessageForm from '../NewMessageForm'
 import DataContext from '../../context/DataContext'
 import Icon from '../../components/Icon'
+import { useParams } from 'react-router'
+import api from '../../functions/api'
+import { useCampaign } from '../../pages/CampaignPage'
 
 // Description : 
 // Props : ____________ , _________
@@ -14,7 +17,8 @@ import Icon from '../../components/Icon'
 export default function MsgListHolder() {
 
   const [searchTerm, setSearchTerm] = useState('')
-
+  const {campId} =useParams()
+const { getCamp} = useCampaign()
   const { isOpen, setIsOpen } = useContext(DataContext);
 
   return (
@@ -24,7 +28,7 @@ export default function MsgListHolder() {
         <MessageList searchTerm={searchTerm} />
       </div>
       <span className={styles.newMsg}>
-        <div className={styles.item} onClick={() => setIsOpen(<NewMessageForm setIsOpen={setIsOpen} />)}>
+        <div className={styles.item} onClick={() => setIsOpen(<NewMessageForm setIsOpen={setIsOpen} campId={campId} getCamp={getCamp} />)}>
           <Icon nameIcon={'pluscircle'} nameColor={'create'} />
           <Button className="create"
           content='הודעה חדשה'

@@ -5,18 +5,20 @@ import Button from '../Button'
 import InputWrapper from '../InputWrapper'
 import axios from 'axios'
 import api from '../../functions/api'
+import TabSwitcher from '../../components/TabSwitcher'
+
 
 // קומפוננטת הרשמת משתמש חדש לא ליד!! 
 
 
 export default function Register() {
-    const fromtemplet={name:'',phone:'',email:'',password:'',passwordConfirm:''}
+    const fromtemplet = { name: '', phone: '', email: '', password: '', passwordConfirm: '' }
     const [formState, setFormState] = useState(fromtemplet)
     const [errorForm, setErrorForm] = useState(fromtemplet)
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const data =formState
+        const data = formState
         api.post("/user", data).
             catch((res) => console.log("יצירת משתמש נכשלה:", res.data))
 
@@ -56,10 +58,14 @@ export default function Register() {
             return newData
         })
     }
-
+    const arr = [{ tab: "register", text: "הרשמה" }, { tab: "login", text: "התחברות" }]
 
     return (
-        <div className={styles.centerDiv}>
+        <div >
+            
+            <TabSwitcher rout={arr} />
+            
+            {/* <div className={styles.line}></div> */}
             <form className={styles.register} onSubmit={handleSubmit}>
 
                 <div className={styles.inputSpace}>

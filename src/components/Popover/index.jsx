@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import style from "./style.module.css";
-export default function Popover({ list, children, fnName }) {
+export default function Popover({ list, children, fnName, }) {
     const maxHeight = (list.length * 50) + 20
     const [isClicked, setIsClicked] = useState(false)
-    let finalFunction = {}
 
+
+
+
+    let finalFunction = {}
     if (fnName === "onClick") {
         finalFunction = {
             onClick: handleClick
@@ -22,6 +25,7 @@ export default function Popover({ list, children, fnName }) {
         }
 
     }
+
 
 
     function handleClick(e) {
@@ -52,8 +56,8 @@ export default function Popover({ list, children, fnName }) {
     }
 
     return (
-        <div style={{ position: "relative", width: 'fit-content' }} {...finalFunction} >
-            <button >
+        <div className={style.mainIcon} {...finalFunction} >
+            <button className={style.children} >
                 {children}
             </button>
             {!isClicked ? ""
@@ -61,9 +65,10 @@ export default function Popover({ list, children, fnName }) {
                 : <div className={style.Popover} style={isClicked} >
                     <ul >
                         {list?.map?.(item => (
-                            <li onClick={item.onClick} className="list-item" key={item.text}>
-                                <span className="text">{item.text}</span>
+                            <li className={item.color === "red" ? style.red : style.green}
+                                onClick={item.onClick} key={item.text} >
                                 <span className={style.icon}>{item.icon}</span>
+                                <span className={style.text}>{item.text}</span>
                             </li>
                         ))}
                     </ul>
@@ -75,3 +80,4 @@ export default function Popover({ list, children, fnName }) {
 
 
 
+// SVG

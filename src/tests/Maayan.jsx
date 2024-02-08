@@ -5,10 +5,10 @@ export default function Maayan() {
   let list = [
     { text: "התנתק", icon: '💢', onClick: () => alert("maayam ha-tambal") },
     { text: "לשנות פרופיל", icon: '💨' },
-    { text: "למחוק", icon: '🗑' },
-    { text: "התנתק", icon: '💢' },
-    { text: "לשנות פרופיל", icon: '💨' },
-    { text: "למחוק", icon: '🗑' },
+    { text: "למחוק", icon: '🗑', color: 'red' },
+    { text: "התנתק", icon: '💢', color: 'green' },
+    { text: "לשנות פרופיל", icon: '💨', color: 'red' },
+    { text: "למחוק", icon: '🗑', color: 'green' },
   ];
 
   return (

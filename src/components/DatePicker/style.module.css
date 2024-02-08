@@ -31,7 +31,7 @@ input[type="date"]:focus {
     height: 34px;
     border: 1px solid #DEE2E9;
     outline: 'none';
-    color: #6B6B6B;
+    color:  #000000;
     font-size: 14px;
     font-weight: 400;
     line-height: 34px;

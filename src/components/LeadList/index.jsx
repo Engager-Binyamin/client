@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 // Creator : Yehoshua Preiser
 
 export default function LeadList({ searchTerm, sortType }) {
-  const campaign = useCampaign()
+  const { campaign } =useCampaign()
   const [sortedLeadArray, setSortedLeadArray] = useState([]);
 
   useEffect(() => {

@@ -12,7 +12,7 @@ import formatDate from '../../functions/DateFormat';
 // Creator : yehoshua preiser
 export default function MessageList({ searchTerm }) {
 
-  const campaign = useCampaign();
+  const { campaign } =useCampaign();
   const [organizedMessages, setOrganizedMessages] = useState({});
 
   useEffect(() => {

@@ -7,6 +7,9 @@ import SearchBar from '../SearchBar';
 import styles from './style.module.css'
 import Popover from '../Popover';
 import Icon from '../Icon';
+import PopUp from '../PopUp';
+import UpdateAndAddLead from '../UpdateAndAddLead';
+import DataContext from '../../context/DataContext'
 import CampaignInfo from '../CampInfo';
 import { useNavigate } from 'react-router';
 
@@ -15,10 +18,11 @@ import { useNavigate } from 'react-router';
 export default function LeadsTab() {
   const [searchTerm, setSearchTerm] = useState('')
   const [sortType, setSortType] = useState('date');
+  const { isOpen, setIsOpen } = useContext(DataContext);
 
   const nav = useNavigate()
 
-  const campaign = useCampaign();
+  const { campaign } = useCampaign();
   if (!Object.keys(campaign).length) return <></>
   if (!Object.keys(campaign).length) return <></>
   return (
@@ -28,6 +32,25 @@ export default function LeadsTab() {
         subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות`}
         icon={<Popover fnName={"onClick"}  list={[
           {
+            text: "עריכת רשימה",
+            icon: <Icon nameIcon={"writing"} />,
+            onClick: () => { }
+          },
+          {
+            text: "הוספת ידנית",
+            icon: <Icon nameIcon={"userWithPlus"} />,
+            onClick: () => setIsOpen(<UpdateAndAddLead setIsOpen={setIsOpen} campaign={campaign._id} />)
+          },
+          {
+            text: "ייבוא רשימה",
+            icon: <Icon nameIcon={"importList"} />
+          },
+          {
+            text: "מחיקת רשימה",
+            icon: <Icon nameIcon={"trash"} />,
+            color: "red"
+          },
+        ]} >
             text: "פרטי קמפיין",
             onClick: () => nav(`${campaign._id}`),
             icon: <Icon nameIcon={"writing"} />

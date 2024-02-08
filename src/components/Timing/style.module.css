@@ -1,0 +1,9 @@
+.timing{
+   background-color:  #F7F7F7;
+} 
+
+.pickers{
+   display: flex;
+   flex-direction: row;
+   gap: 20px;
+}
