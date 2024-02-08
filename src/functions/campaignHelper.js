@@ -170,31 +170,28 @@
 
 function msgSentLeads(campaignObj, msgId) {
     const msgObject = campaignObj?.msg?.find?.(msgObj => msgObj._id === msgId)
-    const arrayOfLeadsInMsg = msgObject?.leads || []
-    const NumberOfMsgReciever = arrayOfLeadsInMsg?.length || 0
-
-    return (
-        [arrayOfLeadsInMsg, NumberOfMsgReciever]
-    )
+    return msgObject?.leads?.map(l => {
+        let fullLead = campaignObj.leads.find(ll => ll.lead._id == l.lead)
+        return { ...fullLead.lead, receptionDate: l.receptionDate }
+    })
 }
 
 function msgNotSentLeads(campaignObj, msgId) {
-    const leadsInCampaign = campaignObj.leads
-    const numberOfLeadsInCampaign = leadsInCampaign.length
+    const sentLeads = msgSentLeads(campaignObj, msgId)
+    const leadIds = sentLeads.map(s => s._id)
 
-    const sentLeadsResultsArray = msgSentLeads(campaignObj, msgId)
-
-    const NotSentLeadsArray = leadsInCampaign.filter(campLead => !sentLeadsResultsArray[0].some(msgLead => msgLead._id === campLead._id))
-
-    const NumberOfNotSentLeads = numberOfLeadsInCampaign - sentLeadsResultsArray[1]
-
-
-
-
-    return [NotSentLeadsArray, NumberOfNotSentLeads]
+    return campaignObj.leads
+        .filter(cl => !leadIds.includes(cl.lead._id))
+        .map(lead => lead.lead)
 }
 
-
+function msgSentDetails(campaign, msgId) {
+    if (!Object.keys(campaign).length) return {}
+    return {
+        sent: msgSentLeads(campaign, msgId),
+        notSent: msgNotSentLeads(campaign, msgId)
+    }
+}
 
 function leadMsgs(campaignObj, leadId) {
     const msgArrayOfCampaign = campaignObj.msg
@@ -209,4 +206,4 @@ function leadMsgs(campaignObj, leadId) {
     return arrayOfleadMsgs
 }
 
-export default { msgSentLeads, msgNotSentLeads, leadMsgs }
+export default { msgSentLeads, msgNotSentLeads, msgSentDetails, leadMsgs }

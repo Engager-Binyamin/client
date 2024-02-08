@@ -15,7 +15,6 @@ export default function Icon({ nameIcon, nameColor }) {
     else {
         nameColor = "#6B6B6B"
     }
-    console.log(iconsPath[nameIcon]);
     return <div className={styles.icon}>
         <svg width={iconsPath[nameIcon]?.style?.width} height={iconsPath[nameIcon]?.style?.height} viewBox={iconsPath[nameIcon]?.style?.viewBox} fill="none" xmlns="http://www.w3.org/2000/svg">
             {iconsPath[nameIcon]?.path?.map?.((p, i) => <path key={i} d={p} stroke={nameColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />)}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import InputWrapper from '../InputWrapper'
 import InputText from '../InputText/InputText'
 import styles from './style.module.css'
@@ -6,17 +6,21 @@ import InputTextArea from '../InputTextArea'
 import Button from '../Button'
 import axios from 'axios'
 import api from '../../functions/api'
+import LeadInfoPage from '../../pages/LeadInfoPage/index'
+import DataContext from '../../context/DataContext'
 
-export default function UpdateAndAddLead({ details, campaign }) {
 
-// להעביר כזה אובייקט.. בקשה...
+export default function UpdateAndAddLead({ details, campaign, }) {
+    console.log({ campaign });
+    // להעביר כזה אובייקט.. בקשה...
     // details = {name:"aryeh", email:"aryeh@gmil.com",phone:"052776",notes:"", leadId: "dfyui"}
 
 
-
+    const [fetchedCampaigns, setFetchedCampaigns] = useState(null);
     const [workOrFinally, setWorkOrFinally] = useState('work')
     const [editOrAdd, setEditOrAdd] = useState()
     const [erorrState, setErorrState] = useState()
+    const { isOpen, setIsOpen } = useContext(DataContext);
     const [newData, setNewData] = useState({
         name: details ? details.name : '',
         phone: details ? details.phone : '',
@@ -37,9 +41,6 @@ export default function UpdateAndAddLead({ details, campaign }) {
 
     }
 
-    function handleCancel() {
-        // setשהגיע בפרופס 
-    }
 
     function isValidIsraeliPhoneNumber(phoneNumber) {
         // Israeli phone number regex pattern
@@ -48,7 +49,7 @@ export default function UpdateAndAddLead({ details, campaign }) {
         return regexPattern.test(phoneNumber);
     }
 
- const handleOnSubmit = async (e) => {
+    const handleOnSubmit = async (e) => {
         e.preventDefault()
         if (!isValidIsraeliPhoneNumber(newData.phone)) {
             setErorrState('מספר הטלפון לא תקין ')
@@ -83,6 +84,20 @@ export default function UpdateAndAddLead({ details, campaign }) {
         }
     }
 
+    useEffect(() => {
+        if (workOrFinally === 'finally') {
+            // Fetch campaign data upon form submission
+            const fetchCampaign = async () => {
+                try {
+                    const response = await api.get(`/campaign/`);
+                    setFetchedCampaigns(response.data);
+                } catch (error) {
+                    console.error('Error fetching campaign data:', error);
+                }
+            };
+            fetchCampaign();
+        }
+    }, [workOrFinally, campaign]);
 
 
     return <div className={styles.contanier} >
@@ -100,12 +115,14 @@ export default function UpdateAndAddLead({ details, campaign }) {
                 <InputWrapper label={'הערות'} children={<InputTextArea name='notes' style={{ width: "100%" }} value={newData.notes} onChange={(e) => handleChange(e)} />} />
                 <div className={styles.buttons}>
                     <Button content='שמירה' />
-                    <Button content='ביטול' className='cancel' onClick={()=>{setIsEdite(false)}} />
+                    <Button content='ביטול' className='cancel' onClick={() => { (editOrAdd == "edit") ? setIsEdite(false) : setIsOpen(false) }} />
 
                 </div>
             </form>
             :
-            <div>המשתמש נשמר בהצלחה</div>
+            (editOrAdd == "edit") ?
+                <LeadInfoPage /> :
+                <div>ההצטרפות בוצעה בהצלחה!</div>
         }
 
     </div>

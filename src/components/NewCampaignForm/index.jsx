@@ -13,7 +13,6 @@ import CampaignItem from "../CampaignItem";
 export default function NewCampaigenForm({ setIsOpen, getCamp }) {
   // const [user, setUser] = useState(userid);
   const { user, setUser } = useContext(DataContext)
-  console.log("user", user)
   const [campName, setCampName] = useState("");
   const [isVisible, setIsVisible] = useState(false);
 
@@ -30,7 +29,6 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
       const response = await api.post("/campaign",
         body
       );
-      console.log(user, campName, starterMsg);
       toast.success(response && "נשלח בהצלחה!");
       getCamp()
     } catch (Error) {

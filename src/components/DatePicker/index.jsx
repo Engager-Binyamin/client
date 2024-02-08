@@ -9,10 +9,6 @@ import Icon from '../Icon';
 export default function DatePicker({style, ...props}) {
    const [mode,setMode] = useState("placeholder")
    const today = new Date()
-  //  .toISOString()
-  //  .split('T')[O];
-  // const today = new Date().toISOString().split('T')[0];
-console.log(today);
    
   return (
     <div className={styles.datePicker}>

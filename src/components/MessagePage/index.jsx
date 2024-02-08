@@ -16,13 +16,14 @@ export default function MessagePage() {
     const { isOpen, setIsOpen } = useContext(DataContext)
 
     const { messageId } = useParams();
-    const { campaign } = useCampaign() || {};
-    console.log({ campaign });
+    const { campaign } =useCampaign() || {};
     const msgs = campaign.msg || [];
     const message = msgs.find(msg => msg._id == messageId) || {}
-    console.log(msgs);
 
     const { creationDate, subject, content } = message;
+
+    let msgSent = campaignHelper.msgSentDetails(campaign, message._id)
+    console.log(msgSent);
     
     let dateSend = '04/05/2025'
     let timeSend = '12:24'
@@ -64,17 +65,13 @@ export default function MessagePage() {
             </div>
 
             <Accordion
-                title={`נשלח ל-${campaignHelper.msgSentLeads(campaign, message._id)[1]} אנשים`}
-                campaignId={campaign._id}>
-                {campaignHelper.msgSentLeads(campaign, message._id)[0]}
-                {/* {console.log(campaign)} */}
-            </Accordion>
+                title={`נשלח ל-${msgSent.sent?.length} אנשים`}
+                campaignId={campaign._id}
+                leadList = {msgSent.sent}/>
             <Accordion
-                title={`לא נשלח ל-${campaignHelper.msgNotSentLeads(campaign, message._id)[1]} אנשים`}
-                campaignId={campaign._id}>
-                {campaignHelper.msgNotSentLeads(campaign, message._id)[0]}
-                {/* {console.log(campaign)} */}
-            </Accordion>
+                title={`לא נשלח ל-${campaign.leads?.length - msgSent.sent?.length} אנשים`}
+                campaignId={campaign._id}
+                leadList = {msgSent.notSent} />
         </div>
     )
 }

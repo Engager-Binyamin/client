@@ -51,13 +51,13 @@ import Icon from '../Icon';
 import LeadItem from '../LeadItem';
 import formatDate from '../../functions/DateFormat';
 
-export default function Accordion({ title, children, campaignId }) {
+export default function Accordion({ title,  leadList, campaignId }) {
   const [isOpenAcord, setIsOpenAcord] = useState(false);
-
   const toggleAccordion = () => {
     setIsOpenAcord(prevState => !prevState); // Toggle the state
   };
-
+console.log("leadList",leadList);
+debugger;
   return (
     <div className={isOpenAcord ? styles.wrapper : styles.closeWrapper}>
       <div className={styles.container}>
@@ -68,15 +68,14 @@ export default function Accordion({ title, children, campaignId }) {
               </div>
         </div>
         <div className={styles.content}>
-          {children.map((lead, index) => (
+          {leadList?.map((lead, index) => (
             <div className={styles.single} key={index}>
               <LeadItem
                 campaignId={campaignId}
-                name={"lead.name"}
+                name={lead.name}
                 email={lead.email}
                 date={formatDate(lead.receptionDate)}
                 id={lead._id} />
-              {console.log(lead.name)}
             </div>
           ))}
         </div>
