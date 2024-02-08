@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styles from './style.module.css'
 import CampaignItem from "../CampaignItem";
 import api from "../../functions/api";
 import InputWrapper from "../InputWrapper";
@@ -6,7 +7,7 @@ import InputText from "../InputText/InputText";
 import Button from "../Button";
 
 
-export default function CampaignInfo({ campId, title }) {
+export default function CampaignInfo({ campId, title ,setIsOpen }) {
     const [onecampId, setoneCampId] = useState("");
     const [newTitle, setnewTitle] = useState(title);
     const [isEditing, setIsEditing] = useState(false);
@@ -16,6 +17,8 @@ export default function CampaignInfo({ campId, title }) {
     };
   
     const handleSave = async () => {
+
+      setIsOpen (false)
       // נעדכן את ה-title בשרת כאן
       // לדוגמה:
       console.log("nem:",newTitle);
@@ -24,7 +27,8 @@ export default function CampaignInfo({ campId, title }) {
 
     let nameMessage = { "title": newTitle }
 
-      await api.put(`/campaign/${campId}`,nameMessage).then(() => {
+      await api.put(`/campaign/${campId}`,{data: nameMessage}).then(() => {
+        console.log(campId)
         console.log('Title updated successfully');
       }).catch((error) => {
         console.error('Error updating title:', error);
@@ -36,6 +40,7 @@ export default function CampaignInfo({ campId, title }) {
     const handleCancel = () => {
       setnewTitle(title);
       setIsEditing(false);
+      setIsOpen(false);
     };
   
     useEffect(() => {
@@ -48,7 +53,7 @@ export default function CampaignInfo({ campId, title }) {
   
     return (
       <div>
-        {isEditing ? (
+         
           <>
             <InputWrapper
               label={"ערוך שם רשימה"}
@@ -61,24 +66,22 @@ export default function CampaignInfo({ campId, title }) {
                   value={newTitle}
                 />
               }
+
             />
+            <div className={styles.buttons}>
+              <Button
+              
+                onClick={handleCancel}
+                className={"cancel"}
+                content={"ביטול"}
+              />
             <Button
               onClick={handleSave}
               className={"save"}
               content={"שמירה"}
             />
-            <Button
-              onClick={handleCancel}
-              className={"cancel"}
-              content={"ביטול"}
-            />
+        </div>
           </>
-        ) : (
-          <>
-            <div>{newTitle}</div>
-            <Button onClick={() => setIsEditing(true)} content={"עריכה"} />
-          </>
-        )}
       </div>
     );
   }
