@@ -7,6 +7,8 @@ import SearchBar from '../SearchBar';
 import styles from './style.module.css'
 import Popover from '../Popover';
 import Icon from '../Icon';
+import CampaignInfo from '../CampInfo';
+import { useNavigate } from 'react-router';
 
 
 
@@ -14,6 +16,7 @@ export default function LeadsTab() {
   const [searchTerm, setSearchTerm] = useState('')
   const [sortType, setSortType] = useState('date');
 
+  const nav = useNavigate()
 
   const campaign = useCampaign();
   if (!Object.keys(campaign).length) return <></>
@@ -23,24 +26,25 @@ export default function LeadsTab() {
       <HeadLine
         title={campaign.title}
         subtitle={`${campaign.leads.length} נרשמים, ${campaign.msg.length} הודעות`}
-        icon={<Popover fnName={"onClick"} list={[
+        icon={<Popover fnName={"onClick"}  list={[
           {
-            text: "עריכת רשימה",
+            text: "פרטי קמפיין",
+            onClick: () => nav(`${campaign._id}`),
             icon: <Icon nameIcon={"writing"} />
-          },
-          {
-            text: "הוספת ידנית",
-            icon: <Icon nameIcon={"userWithPlus"} />
-          },
-          {
-            text: "ייבוא רשימה",
-            icon: <Icon nameIcon={"writing"} />
-          },
-          {
-            text: "מחיקת רשימה",
-            icon: <Icon nameIcon={"writing"} />
-          },
-        ]} >
+          }
+          // {
+          //   text: "הוספת ידנית",
+          //   icon: <Icon nameIcon={"userWithPlus"} />
+          // },
+          // {
+          //   text: "ייבוא רשימה",
+          //   icon: <Icon nameIcon={"writing"} />
+          // },
+          // {
+          //   text: "מחיקת רשימה",
+          //   icon: <Icon nameIcon={"writing"} />
+          // },
+        ]}>
           <Icon nameIcon={"menu"} />
         </Popover>} />
       <TabSwitcher rout={[
