@@ -11,7 +11,7 @@ import PopUp from '../PopUp';
 import UpdateAndAddLead from '../UpdateAndAddLead';
 import DataContext from '../../context/DataContext'
 import CampaignInfo from '../CampInfo';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -34,7 +34,8 @@ export default function LeadsTab() {
           {
             text: "עריכת רשימה",
             icon: <Icon nameIcon={"writing"} />,
-            onClick: () => { }
+            onClick: () => { nav(`/campaign/${campaign._id}`) },
+            
           },
           {
             text: "הוספת ידנית",

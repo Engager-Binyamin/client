@@ -74,7 +74,7 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
             }
             type="text"
           />
-          {/* onClick={ setIsOpen(false)}  */}
+          {/* onClick={ setIsOpen(false)}*/}
           <div className={styles.actions}>
             <Button className={"save"} content={"שמירה"} />
             <Button className={"cancel"} content={"ביטול"} />

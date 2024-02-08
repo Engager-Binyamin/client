@@ -2,16 +2,21 @@ import React, { useEffect, useState } from "react";
 import CampaignItem from "../CampaignItem";
 import api from "../../functions/api";
 
-export default function CampaignInfo({ campaignList, campId }) {
+export default function CampaignInfo({ campaignList }) {
   const [onecampId, setoneCampId] = useState("");
-
-  useEffect(async() => {
-   await api.get("campId",campId).then((res) => res);
-  },[setoneCampId]);
+  const { campId } = useParams();
+  useEffect(() => {
+    if (campId) {
+      // קריאה ל-API עם campId
+      api.get(`/campaign/${campId}`).then((res) => {
+        setoneCampId(res.data); // זה יכול להיות setCampaign או כל שם אחר שתבחר
+      });
+    }
+  }, [campId]);
+  
   return (
     <div >
-        הקופוננטה של אלירזז
-        {onecampId.title}
+        הקופוננטה של אלירזז      
     </div>
 
     //   const [item,setItem]=useState({})

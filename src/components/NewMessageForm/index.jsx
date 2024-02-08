@@ -6,8 +6,6 @@ import Button from "../Button";
 import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
 
-import api from '../../functions/api';
-
 
 import { FaTimes } from "react-icons/fa";
 import { useState } from "react";
