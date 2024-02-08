@@ -34,7 +34,7 @@ export default function LeadsTab() {
           {
             text: "עריכת רשימה",
             icon: <Icon nameIcon={"writing"} />,
-            onClick: () => { nav(`/campaign/${campaign._id}`) },
+            onClick: () =>  setIsOpen(<CampaignInfo setIsOpen={setIsOpen} title={campaign.title} campaignList={caches._id}/>) ,
             
           },
           {

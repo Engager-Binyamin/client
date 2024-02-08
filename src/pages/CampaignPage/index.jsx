@@ -51,7 +51,7 @@ export default function CampaignPage() {
     <div className={styles.campaignPage}>
       <CampaignContext.Provider value={{campaign , getCamp} }>
         <Routes>
-          <Route path="/campaign/:campId" element={<CampaignInfo campId={campId}/>}/>
+          <Route path="/campaign/:campId" element={<CampaignInfo/>}/>
         
           <Route path="/leads" element={<LeadsTab />} />
           <Route path="/messages" element={<MsgTab />} />
