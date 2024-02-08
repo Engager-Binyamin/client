@@ -51,23 +51,7 @@ export default function LeadsTab() {
             color: "red"
           },
         ]} >
-            text: "פרטי קמפיין",
-            onClick: () => nav(`${campaign._id}`),
-            icon: <Icon nameIcon={"writing"} />
-          }
-          // {
-          //   text: "הוספת ידנית",
-          //   icon: <Icon nameIcon={"userWithPlus"} />
-          // },
-          // {
-          //   text: "ייבוא רשימה",
-          //   icon: <Icon nameIcon={"writing"} />
-          // },
-          // {
-          //   text: "מחיקת רשימה",
-          //   icon: <Icon nameIcon={"writing"} />
-          // },
-        ]}>
+      
           <Icon nameIcon={"menu"} />
         </Popover>} />
       <TabSwitcher rout={[
