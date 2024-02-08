@@ -16,14 +16,17 @@ export default function MessagePage() {
     const { isOpen, setIsOpen } = useContext(DataContext)
 
     const { messageId } = useParams();
-    const { campaign } =useCampaign() || {};
+    const { campaign } = useCampaign() || {};
     console.log({ campaign });
     const msgs = campaign.msg || [];
     const message = msgs.find(msg => msg._id == messageId) || {}
     console.log(msgs);
 
     const { creationDate, subject, content } = message;
-
+    
+    let dateSend = '04/05/2025'
+    let timeSend = '12:24'
+    
     return (
         <div className={styles.MessagePage}>
             <HeadLine
@@ -36,9 +39,13 @@ export default function MessagePage() {
                 <div className={styles.messageitem}>
                     {content}
                 </div>
+                    {dateSend && timeSend ?
                 <div className={styles.messageDate}>
-                    יישלח ב-{"dateSend"} | {"timeSend"}
-                </div>
+                    יישלח ב- {dateSend} | {timeSend}
+                </div>: 
+                //ToDo: רינדור מותנה לתזמן הודעה, צריך לחבר לאון קליק את הפןנקציה של תזמון הודעה
+                <div className={styles.messageitem}><button onClick={()=>alert('תזמן')}>תזמן הודעה</button></div>
+                }
             </div>
             <div className={styles.send}>
                 <Button
@@ -63,9 +70,9 @@ export default function MessagePage() {
                 {/* {console.log(campaign)} */}
             </Accordion>
             <Accordion
-                title={`נשלח ל-${campaignHelper.msgSentLeads(campaign, message._id)[1]} אנשים`}
+                title={`לא נשלח ל-${campaignHelper.msgNotSentLeads(campaign, message._id)[1]} אנשים`}
                 campaignId={campaign._id}>
-                {campaignHelper.msgSentLeads(campaign, message._id)[0]}
+                {campaignHelper.msgNotSentLeads(campaign, message._id)[0]}
                 {/* {console.log(campaign)} */}
             </Accordion>
         </div>

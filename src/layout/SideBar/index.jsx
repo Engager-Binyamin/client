@@ -1,5 +1,5 @@
 import styles from './style.module.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import Icon from '../../components/Icon'
 import CampaignList from '../../components/CampaignList'
 import Button from '../../components/Button'
@@ -14,15 +14,46 @@ export default function SideBar() {
   const [displaySearchBar, setDisplaySearchBar] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [campaign, setCampaign] = useState([])
+  const [campaignByDate, setCampaignByDate] = useState([])
   const { isOpen, setIsOpen } = useContext(DataContext);
+  const nav = useNavigate()
 
-  const getCamp = ()=>{
+  const getCamp = () => {
     api.get("/campaign")
-    .then(res => {setCampaign(res); console.log(campaign.user)})
+      .then(res => {
+        console.log("campaign:", res)
+        // nav(`campaign/${res[0]._id}`)
+        setCampaign(res)
+      })
+      .then()
   }
   useEffect(() => {
     getCamp()
   }, [])
+
+  const sortCamps = (camps) => {
+    return camps.slice().sort((a, b) => {
+      const latestMsgA = getLatestMessageDate(a);
+      const latestMsgB = getLatestMessageDate(b);
+      return latestMsgB - latestMsgA;
+    });
+  };
+  
+  const getLatestMessageDate = (campaign) => {
+    if (!campaign.msg || campaign.msg.length === 0) {
+      return new Date(0); // Return a default date if no messages are present
+    }
+    
+    return campaign.msg.reduce((latest, msg) => {
+      const msgDate = new Date(msg.creationDate);
+      return msgDate > latest ? msgDate : latest;
+    }, new Date(0));
+  };
+  
+const deleteLS=()=>{
+ delete localStorage.token
+}
+
 
   return (
     <div className={styles.sidebar}>
@@ -52,14 +83,20 @@ export default function SideBar() {
               <Icon nameIcon={'thumbsup'} nameColor={''} />
             </NavLink>
           </li> */}
+          <li onClick={deleteLS}>
+            <NavLink to="/login">
+              התנתקות    
+              <Icon nameIcon={'logout'} nameColor={''} />
+            </NavLink>
+          </li>
         </ul>
       </div>
       <div className={styles.lists} >
         <div className={styles.liststitle}>רשימות</div>
         <div className={styles.newlist} >
-          <CampaignList searchTerm={searchTerm} campaignList={campaign}/>
-          <div className={styles.item} onClick={()=> setIsOpen(<NewCampaigenForm setIsOpen={setIsOpen} getCamp={getCamp} />)}>
-            <Icon nameIcon={'pluscircle'} nameColor={'create'}  />
+          <CampaignList searchTerm={searchTerm} campaignList={campaign} />
+          <div className={styles.item} onClick={() => setIsOpen(<NewCampaigenForm setIsOpen={setIsOpen} getCamp={getCamp} />)}>
+            <Icon nameIcon={'pluscircle'} nameColor={'create'} />
             <Button className="create"
               content="רשימה חדשה"
             />
@@ -75,20 +112,3 @@ export default function SideBar() {
   )
 }
 
-//   {
-//     id: "65c0939a5aa397278552a5b5",
-//     title: "קורס תפירה 2023_3"
-//   },
-//   {
-//     id: "2",
-//     title: "כפר נוער - גיוס תלמידים"
-//   },
-//   {
-//     id: "3",
-//     title: "מנויי חדר כושר גבעת שמואל הנביר"
-//   },
-//   {
-//     id: "4",
-//     title: "מנויי חדר כושר גבעת שמואל הנביר"
-//   }
-// ]

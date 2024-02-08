@@ -21,8 +21,8 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
     e.preventDefault();
     const body = {
       // "user": user,
-      "campName": campName,
-      "starterMsg": starterMsg      
+      "title": campName,
+      "starterMsg": starterMsg
     };
 
     setIsOpen(false);
@@ -30,8 +30,8 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
       const response = await api.post("/campaign",
         body
       );
+      console.log(user, campName, starterMsg);
       toast.success(response && "נשלח בהצלחה!");
-      console.log(user, campName , starterMsg);
       getCamp()
     } catch (Error) {
       console.error("Error:", Error);
@@ -60,8 +60,8 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
             }
             type="text"
           />
-<br />
-<br />
+          <br />
+          <br />
           <InputWrapper
             label={"הודעת אפס"}
             subLabel={"זוהי ההודעה שתשלח אוטומטית לכל מצטרף חדש לרשימה"}
@@ -74,10 +74,9 @@ export default function NewCampaigenForm({ setIsOpen, getCamp }) {
             }
             type="text"
           />
-          {/* onClick={ setIsOpen(false)}*/}
           <div className={styles.actions}>
-            <Button className={"save"} content={"שמירה"} />
-            <Button className={"cancel"} content={"ביטול"} />
+            <Button type={"submit"} className={"save"} content={"שמירה"} />
+            <Button className={"cancel"} content={"ביטול"} onClick={()=>setIsOpen(false)}/>
           </div>
         </main>
       </form>

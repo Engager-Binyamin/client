@@ -16,3 +16,9 @@
     overflow-y: auto;
     width: 100%;
 }
+
+.menu{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}

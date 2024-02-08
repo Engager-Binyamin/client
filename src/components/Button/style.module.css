@@ -28,6 +28,7 @@
     font-weight: 400;
     color: white;
     font-family: var(--button-font);
+    cursor: pointer;
 }
 
 .save:hover {

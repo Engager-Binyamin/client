@@ -17,10 +17,10 @@ import { toast } from "react-toastify";
 // Props : ____________ , _________
 // Creator : ________
 
-export default function NewMassageForm({ setIsOpen,  campId , getCamp}) {
+export default function NewMassageForm({ setIsOpen, campId, getCamp }) {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
-console.log({getCamp});
+  console.log({ getCamp });
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submmit = { subject, content };
@@ -36,12 +36,14 @@ console.log({getCamp});
       getCamp()
     } catch (error) {
       console.error("Error:", error);
+      toast.error(Error?.response?.data?.msg || "something went wrong");
+
     }
   };
 
   return (
     <div className={styles.InputWrapper}>
-      
+
       <form onSubmit={handleSubmit}>
         <main className={styles.main}>
           <InputWrapper
@@ -56,9 +58,8 @@ console.log({getCamp});
             }
             type="text"
           ></InputWrapper>
-  <br />
-  
-  <br />
+          <br />
+          <br />
           <InputWrapper
             label="הודעה"
             subLabel="זוהי  ההודעה שתשלח בתזמון הנבחר"
@@ -72,11 +73,11 @@ console.log({getCamp});
             type="text"
           />
         </main>
-        
+
 
         <div className={styles.actions}>
           <Button className={"save"} content={"שמירה"} />
-          <Button className={"cancel"} content={"ביטול"} />
+          <Button className={"cancel"} content={"ביטול"} onClick={() => setIsOpen(false)} />
         </div>
       </form>
     </div>

@@ -8,11 +8,11 @@ import styles from './style.module.css'
 export default function HeadLine({ title, subtitle, icon = "" }) {
   return (
     <div className={styles.headLine} >
-      <div >
+      <div className={styles.titles}>
         <p className={styles.title} >{title}</p>
         {subtitle ? <p className={styles.subtitle} >{subtitle}</p> : ""}
       </div >
-      <div >{icon}</div>
+      {/* <div >{icon}</div> */}
     </div>
   )
 }

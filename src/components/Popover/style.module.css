@@ -6,8 +6,10 @@
 }
 
 .children{
+    cursor: pointer;
     background-color: transparent;
     border: none;
+    padding: 10px;
 }
 
 .Popover {
@@ -52,7 +54,7 @@
 
 .red:hover {
     background-color: #F3F3F5;
-    color: rgb(157, 14, 14);
+    color: rgb(219, 0, 0);
     border-radius: 8px;
 
 }

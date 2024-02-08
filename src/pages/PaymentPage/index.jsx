@@ -1,6 +1,6 @@
 import styles from './style.module.css'
 import Iframe from 'react-iframe'
-import SslImage from '../../assets/credit-ssl.JPG'
+import SslImage from '../../assets/credit-ssl.jpg'
 
 export default function PaymentPage() {
   return (

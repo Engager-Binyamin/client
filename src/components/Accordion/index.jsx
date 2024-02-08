@@ -62,10 +62,10 @@ export default function Accordion({ title, children, campaignId }) {
     <div className={isOpenAcord ? styles.wrapper : styles.closeWrapper}>
       <div className={styles.container}>
         <div className={styles.header} onClick={toggleAccordion}>
-          <div>
-            {isOpenAcord ? <Icon nameIcon={'x'} nameColor={''} /> : <div className={styles.open}><Icon className={styles.icon} nameIcon={'enlarge'} nameColor={''} />{'הצג הכל'}</div>}
-          </div>
           <span className={styles.title}>{title}</span>
+              <div className={styles.iconContainer}>
+                {isOpenAcord ? <Icon nameIcon={'x'} nameColor={''} /> : <div className={styles.open}><Icon className={styles.icon} nameIcon={'enlarge'} nameColor={''} />{'הצג הכל'}</div>}
+              </div>
         </div>
         <div className={styles.content}>
           {children.map((lead, index) => (
