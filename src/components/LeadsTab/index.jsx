@@ -44,7 +44,8 @@ export default function LeadsTab() {
         <Popover fnName={"onClick"} list={[
           {
             text: "עריכת רשימה",
-            icon: <Icon nameIcon={"writing"} />
+            icon: <Icon nameIcon={"writing"}/>,         
+             onClick: () =>  setIsOpen(<CampaignInfo setIsOpen={setIsOpen} title={campaign.title} campaignList={caches._id}/>) 
           },
           {
             text: "הוספת ידנית",
