@@ -2,6 +2,7 @@
     position: relative;
     width: fit-content;
     z-index: 100;
+    cursor: pointer;
 }
 
 .children{
@@ -37,6 +38,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    cursor: pointer;
+
 
 }
 

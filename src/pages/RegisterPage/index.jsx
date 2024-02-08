@@ -17,10 +17,17 @@ export default function RegisterPage() {
     const arr =[{tab:"register",text:"הרשמה"},{tab:"login",text:"התחברות"}]
 
   return (
-    < div >
-     <Register  />
+   
+    < div className={styles.container}>
+    <div className={styles.allin}>
+    <div className={styles.login}>
+    <Register  />
+    </div>
+    </div>
     </div>
     )
       
     
 }
+
+

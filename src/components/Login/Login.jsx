@@ -52,14 +52,15 @@ const nav =useNavigate()
     return (
         <form onSubmit={handleSubmit} className={styles.loginDiv}>
 
-            <div className={styles.inputSpace}>
-                <InputWrapper label={"טלפון"}>
+            <div >
+                <InputWrapper label={"טלפון"} >
+                    <div className={styles.inputSpace}>
                     <InputText name={'phone'} required={true} onChange={handleChange} value={formState.name} />
+                    </div>
                 </InputWrapper>
             </div>
 
-
-            <div className={styles.inputSpace}>
+            <div >
                 <InputWrapper label={"סיסמה"}>
                     <InputText name={'password'} required={true} onChange={handleChange} value={formState.name} />
                 </InputWrapper>
@@ -71,27 +72,5 @@ const nav =useNavigate()
             </div>
 
         </form>
-
-
-        // ******************************************
-
-        // <div >
-        //     <form className={styles.register} onSubmit={handleSubmit}>
-
-        //         <div className={styles.inputSpace}>
-        //             <InputWrapper label={"שם משתמש"} >
-        //                 <InputText name={'userFName'} required={true} onChange={handleChange} value={formState.name} />
-        //             </InputWrapper>
-        //         </div>
-
-        //         <div className={styles.inputSpace}>
-        //             <InputWrapper label={"הזן סיסמה"} >
-        //                 <InputText name={'userLName'} required={true} onChange={handleChange} value={formState.name} />
-        //             </InputWrapper>
-        //         </div>
-
-
-        //     </form>
-        // </div>
     )
 }

@@ -17,9 +17,7 @@ export default function InputWrapper({label,  subLabel, to = "",children ,setIsV
         {label}
          {setIsVisible && <div className={styles.asterisk}> * </div>}
       </label>
-      <label className={styles.label} htmlFor={to}>
-        {subLabel}
-      </label>
+     {subLabel && <label className={styles.label} htmlFor={to}>{subLabel}</label>}
       {children}
     </div>
   );

@@ -18,12 +18,17 @@ export default function LoginPage() {
   // const login = () => {
   //   navigate(`/login`, { relative: 'path' })
   // }
-  
+
   return (
-    < div >
-<TabSwitcher rout={arr}/>
-     
-      <Login/>
+    < div className={styles.container}>
+      <div className={styles.allin}>
+       <div className={styles.tabSwitcher}>
+      <TabSwitcher rout={arr}  />
+      </div>
+      <div className={styles.login}>
+      <Login  />
+      </div>
+      </div>
     </div>
 
   )
