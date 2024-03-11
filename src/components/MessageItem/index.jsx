@@ -23,8 +23,8 @@ import { NavLink } from 'react-router-dom';
 // export default function MessageItem({ title = "תראו איזו ", time = "12:42", date = "04/12/2024", isCampaignActive = true, read=false, pending=false }) {
 
 export default function MessageItem({ campaignId, msgId, title, time, date, isCampaignActive = true, read = true, pending = false }) {
-
-
+  // TODO: להגביל את הרוחב של כותרת ההודעה עם 3 נקודות כדי שלא יפלוש מגבול הקומפוננטה
+  // TODO: לדאוג לזה שאייקון ההודעה לא ימעך אם השם ארוך מידי
 
   //**state for active section. changing the background to gray and the icon to green*** */
 

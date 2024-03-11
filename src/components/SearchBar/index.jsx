@@ -18,7 +18,7 @@ import { useState, useEffect } from 'react';
 // setSortType for toggling between sorting by name and date,
 // sortButton to display or hide the sorting button.
 export default function SearchBar({ searchTerm, setSearchTerm, setSortType, sortType, sortButton = false }) {
-
+  // TODO: לסדר את התפריט סינון מבחינת אייקונים ולעשות שיסגר כשלוחצים מחוצה לו, בנוסף להוסיף אותו גם להודעות
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -30,7 +30,6 @@ export default function SearchBar({ searchTerm, setSearchTerm, setSortType, sort
   ])
 
   const handleSort = (type) => {
-    console.log(type);
     setSortType(type);
   };
 
@@ -61,7 +60,7 @@ export default function SearchBar({ searchTerm, setSearchTerm, setSortType, sort
         className={styles.Input}
       />
       {/* <Icon nameIcon={'search'} nameColor={''} className={styles.SearchIcon}/> */}
-      <FaSearch className={styles.SearchIcon} onClick={() => console.log(list)} />
+      <FaSearch className={styles.SearchIcon} onClick={() => { }} />
 
       {sortButton &&
         <span className={styles.SortIcon} >

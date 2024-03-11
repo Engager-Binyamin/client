@@ -6,6 +6,7 @@ import InputWrapper from '../InputWrapper'
 import axios from 'axios'
 import api from '../../functions/api'
 import TabSwitcher from '../../components/TabSwitcher'
+import { useNavigate } from 'react-router-dom'
 
 
 // קומפוננטת הרשמת משתמש חדש לא ליד!! 
@@ -15,7 +16,7 @@ export default function Register() {
     const fromtemplet = { name: '', phone: '', email: '', password: '', passwordConfirm: '' }
     const [formState, setFormState] = useState(fromtemplet)
     const [errorForm, setErrorForm] = useState(fromtemplet)
-
+    const nav = useNavigate()
     async function handleSubmit(e) {
         e.preventDefault();
         const data = formState
@@ -59,56 +60,34 @@ export default function Register() {
         })
     }
     const arr = [{ tab: "register", text: "הרשמה" }, { tab: "login", text: "התחברות" }]
-
+    const tologin = () => {
+        nav('/login')
+    }
     return (
         <div className={styles.container}>
+            <div className={styles.circle}></div>
             <div className={styles.allin}>
                 <div className={styles.tabSwitcher}>
                     <TabSwitcher rout={arr} />
                 </div>
-                <form className={styles.register} onSubmit={handleSubmit}>
-
-                    <div className={styles.inputSpace}>
-                        <InputWrapper label={"שם"} setIsVisible={true} >
-                            <InputText name={'name'} required={true} onChange={handleChange} value={formState.name} />
-                        </InputWrapper>
-                    </div>
-
-                    <div className={styles.inputSpace}>
-                        <InputWrapper label={"טלפון"} setIsVisible={true} >
-                            <InputText name={'phone'} required={true} onChange={handleChange} value={formState.phone} />
-                            {errorForm.phone &&
-                                <div className={styles.error}>{errorForm.phone}</div>}
-                        </InputWrapper>
-                    </div>
-
+                <form className={styles.inputSpace} onSubmit={handleSubmit}>
+                    <div className={styles.title}>אנגייג'ר</div>
+                    <div className={styles.title2}>הרשמה</div>
                     <div className={styles.inputSpace}>
                         <InputWrapper label={"אמייל"} setIsVisible={true} >
-                            <InputText type={'email'} name={'email'} required={true} onChange={handleChange} value={formState.email} />
+                            <InputText type={'email'} name={'email'} required={true} onChange={handleChange} value={formState.email} className={styles.input} />
                             {errorForm.email &&
                                 <div className={styles.error}>{errorForm.email}</div>}
                         </InputWrapper>
                     </div>
-
-                    <div className={styles.inputSpace}>
-                        <InputWrapper label={"סיסמה"} setIsVisible={true} >
-                            <InputText type={'password'} name={'password'} required={true} onChange={handleChange} value={formState.password} />
-                            {errorForm.password &&
-                                <div className={styles.error}>{errorForm.password}</div>}
-                        </InputWrapper>
-                    </div>
-
-                    <div className={styles.inputSpace}>
-                        <InputWrapper label={"אימות סיסמה"} setIsVisible={true} >
-                            <InputText type={'password'} name={'passwordConfirm'} required={true} onChange={handleChange} value={formState.passwordConfirm} />
-                        </InputWrapper>
-                        {errorForm.passwordConfirm &&
-                            <div className={styles.error}>{errorForm.passwordConfirm}</div>}
-                    </div>
-
-                    <div className={styles.button} >
-                        <Button type='submit' content={'הרשם'} />
-                        {/* <Button type='submit' content={'ביטול'} className={"cancel"} /> */}
+                    <button className={styles.button} type='submit' >הרשמה</button>
+                        <button className={styles.buttongoogle} type='submit' >
+                            <img src="google.png" alt="" />
+                            הרשמה באמצעות גוגל
+                        </button>
+                    <div className={styles.notlogin}>
+                        <div className={styles.notlogin1}>כבר רשומים?</div>
+                        <div onClick={tologin} className={styles.notlogin2}>התחברות זה ממש כאן</div>
                     </div>
                 </form>
             </div>

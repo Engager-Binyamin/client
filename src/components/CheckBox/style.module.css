@@ -1,0 +1,30 @@
+.CheckBoxFunction {
+  /* position: relative; */
+  display: flex;
+}
+
+.svg {
+  width: 21px;
+  height: 21px;
+  margin-top: 3px;
+  border: solid black 1px;
+  border-radius: 8px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg:hover {
+  background-color: black 2px;
+}
+
+.CheckBoxFunction .text a {
+  color: black;
+  text-decoration: underline;
+}
+.vi{
+    color: blue;
+}
+
+/* checkbox checked */

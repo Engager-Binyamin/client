@@ -11,6 +11,11 @@ import DataContext from "../../context/DataContext";
 import CampaignItem from "../CampaignItem";
 
 export default function NewCampaigenForm({ setIsOpen, getCamp }) {
+
+  // TODO: לתקן את השגיאה שקמפיין חדש לא נוצר  
+  // TODO: ליישר את הכפתורים של הביטול והשמירה לפס של האינפוט של התוכן של ההודעה
+  // TODO: להגביל את אורך שם הקמפיין למספר תווים מקסימלי
+
   // const [user, setUser] = useState(userid);
   const { user, setUser } = useContext(DataContext)
   const [campName, setCampName] = useState("");

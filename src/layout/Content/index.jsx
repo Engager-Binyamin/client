@@ -11,7 +11,7 @@ export default function Content() {
       <Routes>
         <Route path='/campaign/:campId/*' element={<CampaignPage />} />
         <Route path='/settings' element={<Setting />} />
-          <Route path='/payment' element={<PaymentPage />} />
+        <Route path='/payment' element={<PaymentPage />} />
       </Routes>
     </div>
   )

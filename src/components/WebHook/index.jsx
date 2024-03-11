@@ -20,7 +20,6 @@ export default function WebHook({ campaign_id }) {
         <p className={styles.pas}>זוהי הכתובת של המנגנון שמאפשר לנו לקבל את פרטי הנרשמים מהטופס שלך, ברגע שמתבצעת הרשמה</p>
         <div className={styles.link}>
             <p className={styles.pLink}>{link}</p>
-            {console.log(link)}
             <div className={styles.icon} onClick={copy}>
                 <Icon nameIcon={'copy'} />
             </div>

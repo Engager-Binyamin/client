@@ -10,8 +10,9 @@ import LeadInfoPage from '../../pages/LeadInfoPage/index'
 import DataContext from '../../context/DataContext'
 
 
-export default function UpdateAndAddLead({ details, campaign, }) {
-    console.log({ campaign });
+export default function UpdateAndAddLead({ details, campaign, setIsEdite }) {
+    // TODO: לטפל בכפתורים של הפופאפ שלא יהיו צמודים להערות
+
     // להעביר כזה אובייקט.. בקשה...
     // details = {name:"aryeh", email:"aryeh@gmil.com",phone:"052776",notes:"", leadId: "dfyui"}
 
@@ -22,7 +23,7 @@ export default function UpdateAndAddLead({ details, campaign, }) {
     const [erorrState, setErorrState] = useState()
     const { isOpen, setIsOpen } = useContext(DataContext);
     const [newData, setNewData] = useState({
-        name: details ? details.name : '',
+        name: details ? details.fullName : '',
         phone: details ? details.phone : '',
         email: details ? details.email : '',
         notes: details ? details.notes : ''
@@ -57,7 +58,7 @@ export default function UpdateAndAddLead({ details, campaign, }) {
             setErorrState()
             if (editOrAdd == 'add') {
                 // axios.post('http://localhost:2500/lead/', { data: { ...newData, campaign: campaign } })
-                api.post('/lead/', { data: { ...newData, campaign: campaign } })
+                api.post(`/lead/${campId}`, { data: { ...newData, campaign: campaign } })
                     .then(setWorkOrFinally('finally'))
             } else {
                 if (Object.keys(newData).includes('phone')) {
@@ -65,17 +66,14 @@ export default function UpdateAndAddLead({ details, campaign, }) {
                         let result = newData
                         delete result.phone
                         setNewData(result)
-                        console.log('😓😓😓😓');
                     }
                 }
                 // axios.put(`http://localhost:2500/lead/${details.leadId}`, newData)
-                api.put('/lead/' + details.leadId, newData)
+                api.put(`/lead/${campId}/lead/${leadId}` + details.leadId, newData)
                     .then(res => {
-                        console.log('🧸' + res.data)
                         setWorkOrFinally('finally')
                     })
                     .catch(e => {
-                        console.log("🚛luliau", e.response.data);
                         if (e.response.data == "phoneExist") {
                             setErorrState('מספר הטלפון כבר קיים במערכת')
                         }
@@ -116,7 +114,6 @@ export default function UpdateAndAddLead({ details, campaign, }) {
                 <div className={styles.buttons}>
                     <Button content='שמירה' />
                     <Button content='ביטול' className='cancel' onClick={() => { (editOrAdd == "edit") ? setIsEdite(false) : setIsOpen(false) }} />
-
                 </div>
             </form>
             :

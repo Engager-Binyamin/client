@@ -17,34 +17,35 @@ export default function LeadList({ searchTerm, sortType }) {
     let sortedArray = [...campaign.leads];
     if (sortType === 'name') {
       sortedArray.sort((a, b) => {
-        if (a.lead.name && b.lead.name) {
-          return a.lead.name.localeCompare(b.lead.name);
+        if (a.name && b.name) {
+          return a.name.localeCompare(b.name);
         }
         return 0; 
       });
     } else if (sortType === 'date') {
       sortedArray.sort((a, b) => {
-        if (a.lead.joinDate && b.lead.joinDate) {
-          return a.lead.joinDate.localeCompare(b.lead.joinDate);
+        if (a.joinDate && b.joinDate) {
+          return a.joinDate.localeCompare(b.joinDate);
         }
         return 0; 
       });
     }
     setSortedLeadArray(sortedArray);
   }, [sortType, campaign.leads]);
+  console.log(sortedLeadArray);
   
 
   return (
     <div className={styles.leadArray}>
       {sortedLeadArray
-        .filter(l => l.lead.name.toLowerCase().includes(searchTerm.toLowerCase()))
+        .filter(l => l.fullName.toLowerCase().includes(searchTerm.toLowerCase()))
         .map((lead) => (
           <LeadItem
             campaignId={campaign._id}
-            name={lead.lead.name}
-            email={lead.lead.email}
-            key={lead.lead._id}
-            id={lead.lead._id}
+            name={lead.fullName}
+            email={lead.email}
+            key={lead._id}
+            id={lead._id}
             date={formatDate(lead.joinDate)}
           />
         ))}

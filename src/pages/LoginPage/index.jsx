@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 // Creator: shir
 
 export default function LoginPage() {
-
+  // TODO: למרכז את דף ההתחברות
 
   const navigate = useNavigate()
   const arr = [{ tab: "register", text: "הרשמה" }, { tab: "login", text: "התחברות" }]
@@ -21,13 +21,14 @@ export default function LoginPage() {
 
   return (
     < div className={styles.container}>
+      <div className={styles.circle}></div>
       <div className={styles.allin}>
-       <div className={styles.tabSwitcher}>
-      <TabSwitcher rout={arr}  />
-      </div>
-      <div className={styles.login}>
-      <Login  />
-      </div>
+        <div className={styles.tabSwitcher}>
+          <TabSwitcher rout={arr} />
+        </div>
+        <div className={styles.login}>
+          <Login />
+        </div>
       </div>
     </div>
 

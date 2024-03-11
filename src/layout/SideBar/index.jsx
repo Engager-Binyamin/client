@@ -11,6 +11,11 @@ import api from '../../functions/api'
 import FeedBack from '../../components/FeedBack'
 
 export default function SideBar() {
+
+  // TODO: לגרום לכך שמתי שלוחצים על החיפוש האינפוט ישר יהיה בפוקוס ומוכן להקלדה
+  // TODO: לשים את האינפוט על שורת החיפוש ולא מתחתיו
+  // TODO: ?"בלחיצה על התנתקות לשים פופאפ "האם אתה בטוח שברצונך להתנתק
+
   const [displaySearchBar, setDisplaySearchBar] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [campaign, setCampaign] = useState([])
@@ -19,9 +24,8 @@ export default function SideBar() {
   const nav = useNavigate()
 
   const getCamp = () => {
-    api.get("/campaign")
+    api.get(`/campaign`)
       .then(res => {
-        console.log("campaign:", res)
         // nav(`campaign/${res[0]._id}`)
         setCampaign(res)
       })
@@ -38,21 +42,21 @@ export default function SideBar() {
       return latestMsgB - latestMsgA;
     });
   };
-  
+
   const getLatestMessageDate = (campaign) => {
     if (!campaign.msg || campaign.msg.length === 0) {
       return new Date(0); // Return a default date if no messages are present
     }
-    
+
     return campaign.msg.reduce((latest, msg) => {
       const msgDate = new Date(msg.creationDate);
       return msgDate > latest ? msgDate : latest;
     }, new Date(0));
   };
-  
-const deleteLS=()=>{
- delete localStorage.token
-}
+
+  const deleteLS = () => {
+    delete localStorage.token
+  }
 
 
   return (
@@ -60,6 +64,12 @@ const deleteLS=()=>{
       <div className={styles.sidebartop}>
         <h1>אנגייג׳ר</h1>
         <ul>
+          <li>
+          <NavLink to="/myLeads">
+              כל הלידים שלי
+              <Icon nameIcon={'importList'} nameColor={''} />
+            </NavLink>
+          </li>
           <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
             <span>
               חיפוש
@@ -85,7 +95,7 @@ const deleteLS=()=>{
           </li> */}
           <li onClick={deleteLS}>
             <NavLink to="/login">
-              התנתקות    
+              התנתקות
               <Icon nameIcon={'logout'} nameColor={''} />
             </NavLink>
           </li>

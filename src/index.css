@@ -13,7 +13,7 @@ This will automatically apply the specified font family, size, weight, and color
 :root {
 
   /* Setting up CSS variables for easy font management */
-
+  --main-color: #0E9D85;
   --default-font: 'Heebo', sans-serif;
   /* Default font for body text */
   --font-size: 18px;
@@ -61,7 +61,7 @@ h1 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #0E9D85; /* Set thumb color */
+  background-color: var(--main-color); /* Set thumb color */
   border-radius: 5px; /* Round the corners */
   border: 2px solid #f7f7f7; 
 }

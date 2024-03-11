@@ -52,12 +52,14 @@ import LeadItem from '../LeadItem';
 import formatDate from '../../functions/DateFormat';
 
 export default function Accordion({ title,  leadList, campaignId }) {
+
+  // TODO: לדאוג לכך שאם יש באקורדיון פחות מ3 אנשים/הודעות שיתפתח לרוחב הנדרש ולא יותר ממה שיש
+
   const [isOpenAcord, setIsOpenAcord] = useState(false);
   const toggleAccordion = () => {
     setIsOpenAcord(prevState => !prevState); // Toggle the state
   };
-console.log("leadList",leadList);
-debugger;
+
   return (
     <div className={isOpenAcord ? styles.wrapper : styles.closeWrapper}>
       <div className={styles.container}>
@@ -72,7 +74,7 @@ debugger;
             <div className={styles.single} key={index}>
               <LeadItem
                 campaignId={campaignId}
-                name={lead.name}
+                name={lead.fullName}
                 email={lead.email}
                 date={formatDate(lead.receptionDate)}
                 id={lead._id} />

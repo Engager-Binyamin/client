@@ -1,0 +1,31 @@
+.leadsTable{
+        width: 100%;
+        text-align: center;
+}
+
+.leadsTable th {
+        font-weight: bold;
+        border-bottom: 2px solid var(--main-color);
+        /* margin: 0 10px 0 10px; */
+}
+
+.leadsTable tr {
+        height: 45px;
+}
+.leadsTable tr:hover {
+        background-color: rgba(0, 0, 0, 0.076);
+}
+#heads:hover {
+        background-color: transparent;
+}
+
+.online{
+        color: var(--main-color);
+        text-decoration: underline;
+        cursor: pointer;
+}
+
+.offline{
+        text-decoration: underline;
+        cursor: pointer;
+}

@@ -25,14 +25,11 @@ export default function MsgTab() {
       ]} />
       <MsgListHolder />
       <div className={styles.menu}>
+        {/* TODO: ליישם את האופציות של התפריט הנפתח */}
         <Popover fnName={"onClick"} list={[
           {
             text: "עריכת רשימה",
             icon: <Icon nameIcon={"writing"} />
-          },
-          {
-            text: "הוספת ידנית",
-            icon: <Icon nameIcon={"userWithPlus"} />
           },
           {
             text: "ייבוא רשימה",

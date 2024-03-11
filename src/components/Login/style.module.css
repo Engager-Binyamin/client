@@ -1,13 +1,126 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-
-
-
 .button {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding-top: 1rem;
-    
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    width: 100%;
+    height: 40px;
+    border-radius: 7px;
+    background-color: #0E9D85;
+    margin: 5px 0 5px 0;
+    border: 0px solid magenta;
+    font-size: 15px;
+    color: white;
 }
 
+.buttongoogle {
+    width: 100%;
+    height: 40px;
+    border-radius: 7px;
+    background-color: white;
+    margin: 5px 0 10px 0;
+    border: 2px solid #0E9D85;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.747);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+
+}
+
+.button:hover{
+    background-color: #0e9d85e0;
+    cursor: pointer;
+}
+
+.buttongoogle:hover{
+    color: black;
+    cursor: pointer;
+}
+
+.inputSpace {
+    width: 350px;
+    margin: auto;
+}
+
+.title {
+    /* background-color: aqua; */
+    display: flex;
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.title2 {
+    /* background-color: aqua; */
+    margin: -7px 0 0 0;
+    display: flex;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.input {
+    /* background-color: aqua; */
+    width: 100%;
+    border-radius: 5px;
+    height: 30px;
+    border: 1.5px solid rgb(203, 203, 203);
+}
+
+.input:hover {
+    border: 1.5px solid rgb(179, 179, 179);
+}
+
+.forget {
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: end;
+    font-size: 13px;
+    margin: 10px;
+    color: rgb(140, 140, 140);
+    text-decoration: underline;
+}
+
+.forget:hover {
+    color: rgb(87, 87, 87);
+    cursor: pointer;
+}
+
+img {
+    background: url("google.png");
+    background-size: cover;
+    width: 15px;
+}
+
+.notlogin {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0 10px 0;
+}
+
+.notlogin1 {
+    font-size: 12px;
+    color: rgb(140, 140, 140);
+
+}
+
+.notlogin2 {
+    font-size: 12px;
+    text-decoration: underline;
+    color: rgb(140, 140, 140);
+}
+
+.notlogin2:hover {
+    color: rgb(87, 87, 87);
+    cursor: pointer;
+}
+
+.circle {
+    background-color: #0E9D85;
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    align-items: center;
+}

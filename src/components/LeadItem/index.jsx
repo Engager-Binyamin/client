@@ -18,6 +18,7 @@ export default function LeadItem({ campaignId, name, email, date, id }) {
       <div className={styles.nameAndDetails}>
         <div className={styles.name}>{name}</div>
         <div className={styles.DateAndEmail}>
+          {/* TODO: להוסיף 3 נקודות לאימיילים ארוכים מידי וליישר את התאריך לצד שמאל של הקומפוננטה */}
           <div className={styles.email}>{email}</div>
           <div className={styles.date}>{date}</div>
         </div>

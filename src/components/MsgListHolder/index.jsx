@@ -8,7 +8,6 @@ import NewMessageForm from '../NewMessageForm'
 import DataContext from '../../context/DataContext'
 import Icon from '../../components/Icon'
 import { useParams } from 'react-router'
-import api from '../../functions/api'
 import { useCampaign } from '../../pages/CampaignPage'
 
 // Description : 
@@ -33,8 +32,7 @@ const { getCamp} = useCampaign()
           <Button className="create"
           content='הודעה חדשה'
           />
-        </div>
-        
+        </div>  
       </span>
     </>
   )
