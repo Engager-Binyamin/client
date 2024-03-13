@@ -17,9 +17,7 @@ export function ManageContext({ children }) {
         await api.get('/accout/tokenToUser').then(res => setUser(res))
       };
       tokenToUser();
-    } else {
-      nav('/')
-    }
+    } else { }
   }, [])
 
   return (

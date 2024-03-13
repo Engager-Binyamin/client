@@ -8,8 +8,10 @@ import MessageEdit from '../MessageEdit';
 import DataContext from '../../context/DataContext';
 import Popover from '../Popover';
 import Icon from '../Icon';
+import CampaignInfo from '../CampInfo';
 
 export default function MsgTab() {
+  const { PopUp, setPopUp } = useContext(DataContext);
   const { campaign } = useCampaign();
   if (!Object.keys(campaign).length) return <></>
 
@@ -29,7 +31,18 @@ export default function MsgTab() {
         <Popover fnName={"onClick"} list={[
           {
             text: "עריכת רשימה",
-            icon: <Icon nameIcon={"writing"} />
+            icon: <Icon nameIcon={"writing"} />,
+            onClick: () =>
+              setPopUp({
+                title: "עריכת רשימה",
+                component: (
+                  <CampaignInfo
+                    setPopUp={setPopUp}
+                    title={campaign.title}
+                    campId={campaign._id}
+                  />
+                ),
+              }),
           },
           {
             text: "ייבוא רשימה",
