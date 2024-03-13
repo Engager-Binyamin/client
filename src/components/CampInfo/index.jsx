@@ -21,9 +21,7 @@ export default function CampaignInfo({ campId, title, setPopUp }) {
     setPopUp(false)
     let nameMessage = { "title": newTitle }
 
-    await api.put(`/campaign/${campId}`, { data: nameMessage }).then(() => {
-      setCampaign(prev => ({...prev, details: newTitle}))
-    }).catch((error) => {
+    await api.put(`/campaign/${campId}`, { data: nameMessage }).then(() => {}).catch((error) => {
       console.error('Error updating title:', error);
     });
     setIsEditing(false);
