@@ -73,6 +73,7 @@ export default function UpdateAndAddLead({ details, campaign, setCampaign }) {
                 }
                 toast.success("נשלח בהצלחה!");
                 fetchCampaign();
+                setPopUp(false)
             } catch (error) {
                 console.error(error);
                 toast.error(error?.response?.data?.msg || "שגיאה - משהו השתבש");
@@ -85,9 +86,10 @@ export default function UpdateAndAddLead({ details, campaign, setCampaign }) {
     const fetchCampaign = async () => {
         try {
             await api.get(`/campaign/${campaign}/`)
-            .then(setCampaign)
+                .then(setCampaign)
         } catch (error) {
             console.error('Error fetching campaign data:', error);
+            toast.error(error?.response?.data?.msg || "שגיאה - משהו השתבש");
         }
     };
 
@@ -105,7 +107,7 @@ export default function UpdateAndAddLead({ details, campaign, setCampaign }) {
             <InputWrapper label={'אמייל'} children={<InputText name='email' value={newData.email} onChange={(e) => handleChange(e)} type={"email"} />} />
             <InputWrapper label={'הערות'} children={<InputTextArea name='notes' style={{ width: "100%" }} value={newData.notes} onChange={(e) => handleChange(e)} />} />
             <div className={styles.buttons}>
-                <Button type='submit' content='שמירה' onClick={() => setPopUp(false)} />
+                <Button type='submit' content='שמירה' onClick={handleOnSubmit} />
                 {/* <Button type='submit' content='שמירה'  /> */}
                 <Button content='ביטול' className='cancel' onClick={() => setPopUp(false)} />
                 {/* <Button content='ביטול' className='cancel' onClick={() => { (editOrAdd == "edit") ? setIsEdite(false) : setPopUp(false) }} /> */}
