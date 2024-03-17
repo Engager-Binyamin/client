@@ -36,11 +36,11 @@ export default function MessagePage() {
                 subtitle={`נוצר ב - ${formatDate(creationDate)}`}
                 iconName={'writing'}
                 iconOnClick={() => setPopUp({
-                    title:"עריכת הודעה",
+                    title: "עריכת הודעה",
                     component: <MessageEdit isOpen={isOpen} setPopUp={setPopUp} />
                 }
-                
-               )}
+
+                )}
             />
             <div className={styles.message}>
                 <div className={styles.messageitem}>

@@ -28,6 +28,9 @@ import AllInactiveLeads from '../components/AllInactiveLeads';
 import ChangePasswordPage from '../pages/ChangePasswordPage';
 import FeedBack from '../components/FeedBack';
 import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
+import Plans from '../components/Plans';
+import api from '../functions/api';
+import DataContext from '../context/DataContext';
 import Dashboard from '../pages/Dashboard';
 
 export default function Layout() {
@@ -47,10 +50,10 @@ export default function Layout() {
           <Route path='redircetGoogle/:token' element={<RedirectGoogle />} />
           <Route path='user-doesnt-exists' element={<GoogleRegisterRedirectPage />} />
           <Route path='activate-user/:userToken' element={<ActivateAccount />} />
-
+          <Route path='plans' element={<Plans />} />
           <Route element={<DashboardLayout />} >
-            {/* <Route path='plans' element={<Plans />} /> */}
-            <Route index element={<Dashboard/>} />
+            <Route path='plans' element={<Plans />} />
+            <Route index element={<Dashboard />} />
             <Route path='myLeads' element={<MyLeads />} >
               <Route path="all" element={<AllLeads />} />
               <Route path="active" element={<AllActiveLeads />} />
@@ -68,9 +71,12 @@ export default function Layout() {
               <Route path="webhook" element={<><WebHookTab /><WebHookPage /></>} />
             </Route>
             <Route path='settings' element={<QRCodeComponent />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+
             <Route path='feedback' element={<FeedBack />} />
             <Route path='payment' element={<PaymentPage />} />
           </Route>
+
         </Routes>
         <Test />
         <PopUp />

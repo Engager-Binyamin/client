@@ -1,10 +1,10 @@
 
-.charts-container {
+.charts_container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
-  .chart-wrapper {
+  .chart_wrapper {
     margin: 20px;
     padding: 20px;
     background-color: #F5F5F5;
@@ -13,7 +13,7 @@
     max-width: 400px;
     width: 100%;
   }
-  .chart-title {
+  .chart_title {
     font-size: 18px;
     font-weight: bold;
     text-align: center;

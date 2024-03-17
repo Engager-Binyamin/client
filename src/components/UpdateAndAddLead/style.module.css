@@ -9,13 +9,14 @@
     margin: 20px;
 }
 
-.buttons{
+.buttons {
     display: flex;
     justify-content: space-between;
+    padding: 24px;
 }
 
 
-.error{
+.error {
     color: red;
     margin: 5px;
 }

@@ -9,6 +9,7 @@ import api from '../../functions/api'
 import LeadInfoPage from '../../pages/LeadInfoPage/index'
 import DataContext from '../../context/DataContext'
 import { toast } from 'react-toastify';
+// import  from './LeadInfoPage'
 
 
 export default function UpdateAndAddLead({ details, campaign, setCampaign }) {
@@ -60,8 +61,6 @@ export default function UpdateAndAddLead({ details, campaign, setCampaign }) {
 
     const handleOnSubmit = async (e) => {
         e.preventDefault();
-        console.log({ campaign });
-
         if (!isValidIsraeliPhoneNumber(newData.phone)) {
             setErrorState('מספר הטלפון לא תקין');
         } else {
@@ -95,6 +94,7 @@ export default function UpdateAndAddLead({ details, campaign, setCampaign }) {
 
     return <div className={styles.contanier} >
         <form onSubmit={(e) => handleOnSubmit(e)} >
+            <h1>{newData.fullName}</h1>
             <InputWrapper label={'שם מלא'} children={<InputText name='fullName' value={newData.fullName} required={true} onChange={(e) => handleChange(e)} />} />
             <InputWrapper label={'טלפון'} children={<InputText name='phone' value={newData.phone} required={true} onChange={(e) => handleChange(e)} />} />
             {(errorState)
@@ -105,8 +105,10 @@ export default function UpdateAndAddLead({ details, campaign, setCampaign }) {
             <InputWrapper label={'אמייל'} children={<InputText name='email' value={newData.email} onChange={(e) => handleChange(e)} type={"email"} />} />
             <InputWrapper label={'הערות'} children={<InputTextArea name='notes' style={{ width: "100%" }} value={newData.notes} onChange={(e) => handleChange(e)} />} />
             <div className={styles.buttons}>
-                <Button type='submit' content='שמירה' />
-                <Button content='ביטול' className='cancel' onClick={() => { (editOrAdd == "edit") ? setIsEdite(false) : setPopUp(false) }} />
+                <Button type='submit' content='שמירה' onClick={() => setPopUp(false)} />
+                {/* <Button type='submit' content='שמירה'  /> */}
+                <Button content='ביטול' className='cancel' onClick={() => setPopUp(false)} />
+                {/* <Button content='ביטול' className='cancel' onClick={() => { (editOrAdd == "edit") ? setIsEdite(false) : setPopUp(false) }} /> */}
 
             </div>
         </form>
