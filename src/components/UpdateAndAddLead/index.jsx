@@ -11,30 +11,39 @@ import DataContext from '../../context/DataContext'
 import { toast } from 'react-toastify';
 
 
-export default function UpdateAndAddLead({ details, campaign }) {
+export default function UpdateAndAddLead({ details, campaign, setCampaign }) {
     // להעביר כזה אובייקט.. בקשה...
     // details = {fullName:"aryeh", email:"aryeh@gmil.com",phone:"052776",notes:"", leadId: "dfyui"}
-
-
-    const [fetchedCampaigns, setFetchedCampaigns] = useState(null);
     const [editOrAdd, setEditOrAdd] = useState()
-    const [erorrState, setErorrState] = useState()
+    const [errorState, setErrorState] = useState()
     const { setPopUp } = useContext(DataContext);
     const { user, setUser } = useContext(DataContext)
-
     const [newData, setNewData] = useState({
-        fullName: details ? details.fullName : '',
-        phone: details ? details.phone : '',
-        email: details ? details.email : '',
-        notes: details ? details.notes : ''
-    })
+        fullName: '',
+        phone: '',
+        email: '',
+        notes: ''
+    });
 
     useEffect(() => {
         if (details) {
-            setEditOrAdd('edit')
-        } else { setEditOrAdd('add') }
-    }, [])
-
+            setEditOrAdd('edit');
+            setNewData({
+                fullName: details.fullName || '',
+                phone: details.phone || '',
+                email: details.email || '',
+                notes: details.notes || ''
+            });
+        } else {
+            setEditOrAdd('add');
+            setNewData({
+                fullName: '',
+                phone: '',
+                email: '',
+                notes: ''
+            });
+        }
+    }, [details]);
     const handleChange = (e) => {
         let { name, value } = e.target
         setNewData(old => ({ ...old, [name]: value }))
@@ -44,56 +53,40 @@ export default function UpdateAndAddLead({ details, campaign }) {
 
     function isValidIsraeliPhoneNumber(phoneNumber) {
         // Israeli phone number regex pattern
-        const regexPattern = /^(0(5[^67]|[23489]))([\d]{7})$/;
+        const regexPattern = /^05\d([-]{0,1})\d{7}$/;
         // Check if the provided phone number matches the regex pattern
         return regexPattern.test(phoneNumber);
     }
 
     const handleOnSubmit = async (e) => {
-        e.preventDefault()
-        if (!isValidIsraeliPhoneNumber(newData.phone)) {
-            setErorrState('מספר הטלפון לא תקין ')
-        } else {
-            setErorrState()
-            if (editOrAdd == 'add') {
-                try {
-                    api.post(`lead/${campaign}/lead/`, { userId: user._id, data: { ...newData } })
-                    toast.success(response && "נשלח בהצלחה!");
-                    fetchCampaign()
-                } catch (error) {
-                    console.log(error);
-                    toast.error(Error?.response?.data?.msg || "somthing want worng");
+        e.preventDefault();
+        console.log({ campaign });
 
+        if (!isValidIsraeliPhoneNumber(newData.phone)) {
+            setErrorState('מספר הטלפון לא תקין');
+        } else {
+            setErrorState(null);
+            try {
+                if (editOrAdd === 'add') {
+                    await api.post(`lead/${campaign}/lead/`, { userId: user._id, data: { ...newData } });
+                } else {
+                    await api.put(`lead/${campaign}/lead/${details.leadId}`, { ...newData });
                 }
-            } else {
-                if (Object.keys(newData).includes('phone')) {
-                    if (newData.phone == details.phone) {
-                        let result = newData
-                        delete result.phone
-                        setNewData(result)
-                        console.log('😓😓😓😓');
-                    }
-                }
-                api.put('/lead/' + details.leadId, newData)
-                    .then(res => {
-                        console.log('🧸' + res.data)
-                        fetchCampaign()
-                    })
-                    .catch(e => {
-                        console.log("🚛luliau", e.response.data);
-                        if (e.response.data == "phoneExist") {
-                            setErorrState('מספר הטלפון כבר קיים במערכת')
-                        }
-                    })
+                toast.success("נשלח בהצלחה!");
+                fetchCampaign();
+            } catch (error) {
+                console.error(error);
+                toast.error(error?.response?.data?.msg || "שגיאה - משהו השתבש");
             }
         }
     }
 
 
+
     const fetchCampaign = async () => {
         try {
-            const response = await api.get(`/campaign/`);
-            setFetchedCampaigns(response.data);
+            await api.get(`/campaign/${campaign}/`)
+            .then(setCampaign)
         } catch (error) {
             console.error('Error fetching campaign data:', error);
         }
@@ -104,9 +97,9 @@ export default function UpdateAndAddLead({ details, campaign }) {
         <form onSubmit={(e) => handleOnSubmit(e)} >
             <InputWrapper label={'שם מלא'} children={<InputText name='fullName' value={newData.fullName} required={true} onChange={(e) => handleChange(e)} />} />
             <InputWrapper label={'טלפון'} children={<InputText name='phone' value={newData.phone} required={true} onChange={(e) => handleChange(e)} />} />
-            {(erorrState)
+            {(errorState)
                 ?
-                <div className={styles.error}>{erorrState}</div>
+                <div className={styles.error}>{errorState}</div>
                 :
                 null}
             <InputWrapper label={'אמייל'} children={<InputText name='email' value={newData.email} onChange={(e) => handleChange(e)} type={"email"} />} />

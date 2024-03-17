@@ -17,11 +17,6 @@ export default function LeadsTab() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortType, setSortType] = useState("date");
   const { setPopUp } = useContext(DataContext);
-  const [isEdit, setIsEdite] = useState(false);
-
-  const handleEditClick = () => {
-    setIsEdite(true);
-  };
 
   const nav = useNavigate();
 
@@ -37,7 +32,7 @@ export default function LeadsTab() {
   }, [campaign])
 
   // debugger
-  if (!Object.keys(campaign).length) return <></>;
+  if (!Object?.keys(campaign).length) return <></>;
   return (
     <div className={styles.leadsTab}>
 
@@ -79,6 +74,7 @@ export default function LeadsTab() {
                     <UpdateAndAddLead
                       setPopUp={setPopUp}
                       campaign={campaign._id}
+                      setCampaign={setNewCampaign}
                     />
                   ),
                 }),

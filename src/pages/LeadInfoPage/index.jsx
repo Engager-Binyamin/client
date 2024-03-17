@@ -28,7 +28,7 @@ export default function LeadInfoPage() {
   // TODO: לדאוג לרנדר מחדש את הקומפוננטה כל פעם שפרטי הליד משתנים אחרי שעורכים אותם
 
   const { leadId } = useParams();
-  const { campaign } = useCampaign();
+  const { campaign, setCampaign } = useCampaign();
   const { setPopUp } = useContext(DataContext);
 
   const [lead, setLead] = useState({})
@@ -70,8 +70,9 @@ export default function LeadInfoPage() {
                 component: (
                   <UpdateAndAddLead
                     setPopUp={setPopUp}
-                    campaign={campaign}
                     details={{ fullName, email, phone, notes, leadId: _id }}
+                    campaign={campaign._id}
+                    setCampaign={setCampaign}
                     setIsEdite={setIsEdite}
                   />
                 )
