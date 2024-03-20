@@ -13,8 +13,7 @@ import { useCampaign } from '../../pages/CampaignPage'
 // import  from './LeadInfoPage'
 
 
-export default function UpdateAndAddLead({ details={}, campaign, getCamp,isEdit }) {
-
+export default function UpdateAndAddLead({ details = {}, campaign, getCamp, isEdit }) {
     const [errorState, setErrorState] = useState()
     const { setPopUp } = useContext(DataContext);
 
@@ -25,7 +24,7 @@ export default function UpdateAndAddLead({ details={}, campaign, getCamp,isEdit 
     //     notes: details ? details.notes : ''
     // })
 
-
+console.log(newData.extra);
     const handleChange = (e, isPhone) => {
         let { name, value } = e.target
         if (isPhone && value == details.phone) return;
@@ -35,7 +34,7 @@ export default function UpdateAndAddLead({ details={}, campaign, getCamp,isEdit 
 
     function isValidIsraeliPhoneNumber(phoneNumber) {
         // Israeli phone number regex pattern
-        const regexPattern = /^(0(5[^67]|[23489]))([\d]{7})$/;
+        const regexPattern = /^05\d([-]{0,1})\d{7}$/;
         // Check if the provided phone number matches the regex pattern
         return regexPattern.test(phoneNumber);
     }
@@ -61,16 +60,26 @@ export default function UpdateAndAddLead({ details={}, campaign, getCamp,isEdit 
     }
 
     return <div className={styles.contanier} >
-        <form onSubmit={handleOnSubmit} >
-            <h1>{newData.fullName}</h1>
-            <InputWrapper label={'שם מלא'} children={<InputText name='fullName' value={newData.fullName} required={true} onChange={handleChange} />} />
-            <InputWrapper label={'טלפון'} children={<InputText name='phone' value={newData.phone} required={true} onChange={(e)=>handleChange(e,true)} />} />
-            {errorState && <div className={styles.error}>{errorState}</div>}
-            <InputWrapper label={'אמייל'} children={<InputText name='email' value={newData.email} onChange={handleChange} type={"email"} />} />
-            <InputWrapper label={'הערות'} children={<InputTextArea name='notes' style={{ width: "100%" }} value={newData.notes} onChange={handleChange} />} />
+        <h1>{newData.fullName}</h1>
+        <form onSubmit={handleOnSubmit}  className={styles.form} >
+            <div className={styles.formContent}>
+                <InputWrapper label={'שם מלא'} children={<InputText name='fullName' value={newData.fullName} required={true} onChange={handleChange} />} />
+                <InputWrapper label={'טלפון'} children={<InputText name='phone' value={newData.phone} required={true} onChange={(e) => handleChange(e, true)} />} />
+                {errorState && <div className={styles.error}>{errorState}</div>}
+                <InputWrapper label={'אמייל'} children={<InputText name='email' value={newData.email} onChange={handleChange} type={"email"} />} />
+                {details?.extra &&
+                    Object.entries(newData.extra).map((ex, i) =>{
+console.log('ex:', newData.extra[ex[0]]);
+                        <InputWrapper key={i} label={ex[1].he} children={<InputText name={ex[0]} value={ex[1].value} onChange={handleChange} type={"text"} />} />
+                    }
+                    )
+                }
+                <InputWrapper label={'הערות'} children={<InputTextArea name='notes' style={{ width: "100%" }} value={newData.notes} onChange={handleChange} />} />
+
+            </div>
             <div className={styles.buttons}>
                 <Button type='submit' content='שמירה' />
-                <Button content='ביטול' className='cancel' onClick={()=>{setPopUp(false)}} />
+                <Button content='ביטול' className='cancel' onClick={() => { setPopUp(false) }} />
             </div>
         </form>
     </div>

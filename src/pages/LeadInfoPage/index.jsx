@@ -70,7 +70,7 @@ export default function LeadInfoPage() {
                   <UpdateAndAddLead
                     setPopUp={setPopUp}
                     campaign={campaign}
-                    details={{ fullName, email, phone, notes, leadId: _id }}
+                    details={{ fullName, email, phone, notes, leadId: _id, extra}}
                     isEdit={true}
                     getCamp={getCamp}
                   />
@@ -99,20 +99,20 @@ export default function LeadInfoPage() {
                   <div className={styles.content}>{email}</div>
                 </div>
               </div>
+              <div  className={styles.detailsFrame}>
+              {Object.keys(extra).map((item, index) => {
+                return <div key={index} className={styles.infoBlock}>
+                    <div className={styles.miniTitle}>{extra[item].he}</div>
+                    <div className={styles.content}>{extra[item].value}</div>
+                  </div>
+              })}
+              </div>
               <div className={styles.infoFullCol}>
                 <div>
                   <div colSpan="2" className={styles.miniTitle}>הערות</div>
                   <div colSpan="2" >{notes}</div>
                 </div>
               </div>
-              {Object.keys(extra).map((item, index) => {
-                return <div key={index} className={styles.infoCol}>
-                  <div className={styles.infoBlock}>
-                    <div className={styles.miniTitle}>{extra[item].he}</div>
-                    <div className={styles.content}>{extra[item].value}</div>
-                  </div>
-                </div>
-              })}
             </div>
             <div className={styles.signUpDate}>
               תאריך ההצטרפות: {signUpDate}

@@ -1,18 +1,37 @@
 .contanier {
-    padding: 45px 58px 45px 58px;
+    padding: 25px 58px 20px 58px;
     border-radius: 8px;
-    border: 1px solid #E8E8E8;
-    gap: 20px;
+    /* border: 1px solid #E8E8E8; */
+    gap: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 20px;
+    height: 81vh;
+}
+
+.formContent {
+    max-height: 87%;
+    overflow: scroll;
+
+}
+
+.form {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 100%;
+
+
 }
 
 .buttons {
     display: flex;
     justify-content: space-between;
-    padding: 24px;
+    padding: 18px 18px 0px 18px;
 }
 
 
