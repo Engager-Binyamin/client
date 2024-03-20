@@ -11,7 +11,8 @@ export default function CampaignItem({ id, title }) {
   const active = (campId == id);
 
   return (
-    <div className={styles.item}>
+    <div className={styles.item} title={title}>
+      {/* <div className={styles.hoverTitle}>{title}</div> */}
       <NavLink to={"/campaign/" + id + "/leads"} className={active ? styles.active : ""}>
         <div className={styles.iconitem}>
           {/* אייקון לדוג */}
@@ -20,7 +21,7 @@ export default function CampaignItem({ id, title }) {
           </svg>
         </div>
         <div className={styles.nameitem}>
-          {title}
+          <span>{title}</span>
         </div>
       </NavLink>
     </div>

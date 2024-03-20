@@ -36,6 +36,7 @@ import SettingsTab from "../components/SettingsTab"
 import CheckOut from "../pages/CheckOut"
 import MyUsers from "../components/MyUsers"
 import AllUsers from "../components/AllUsers"
+import UserDetails from "../pages/UserDetails"
 
 export default function Layout() {
   return (
@@ -147,6 +148,7 @@ export default function Layout() {
               />
               <Route path="QrCode" element={<QRCodeComponent />} />
               <Route path="plans" element={<Plans />} />
+              <Route path="userDetails" element={<UserDetails />} />
             </Route>
             <Route path="feedback" element={<FeedBack />} />
             <Route path="payment" element={<PaymentPage />} />
