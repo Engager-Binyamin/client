@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router';
-import styles from '../components/CheckOut/style.module.css';
+import styles from '../pages/CheckOut/style.module.css';
 
 export default function CheckOut() {
   let { programDetails, iFrameLink } = useLocation().state || {};

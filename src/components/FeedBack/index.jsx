@@ -1,39 +1,25 @@
 import styles from "./style.module.css";
-import axios, { Axios } from "axios";
 import InputWrapper from "../InputWrapper";
-import Button from "../Button";
 import InputText from "../InputText/InputText";
 import InputTextArea from "../InputTextArea/index";
 import { toast } from 'react-toastify';
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useParams } from 'react-router'
 import { useNavigate } from "react-router";
+import api from "../../functions/api";
+import DataContext from "../../context/DataContext";
 
 export default function FeedBack() {
-
-  const [user, setUser] = useState("");
-  const [message, setMessage] = useState("");
+  const { user, setUser } = useContext(DataContext)
+  const [content, setContent] = useState("");
   const nav = useNavigate()
 
   const handelSubmitNewFeedBack = async (e) => {
     e.preventDefault();
-    const SubmmitNewFeedBack = {
-      user: _id,
-      message
-    };
     try {
-      const response = await axios.post(
-        // "http://localhost:2500/campaign",
-
-        SubmmitNewFeedBack,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
+      const response = await api.post(
+        `/feedback/${user}`, content);
       toast.success(response && "נשלח בהצלחה!");
-
     } catch (Error) {
       console.error("Error:", Error);
       toast.error(Error?.response?.data?.msg || "something went wrong");
@@ -48,18 +34,18 @@ export default function FeedBack() {
   return (
     <div className={styles.container}>
       <div className={styles.allin}>
-      <div className={styles.circle}></div>
+        <div className={styles.circle}></div>
         <form onSubmit={handelSubmitNewFeedBack} className={styles.inputSpace}>
           <div className={styles.title}>דברו איתנו</div>
           <div>
             <InputWrapper label={"כותרת"} >
-              <InputText name={'title'} required={true} onChange={(e) => setMessage(e.target.value)} className={styles.input} />
+              <InputText name={'title'} required={true} onChange={(e) => setContent(e.target.value)} className={styles.input} />
             </InputWrapper>
           </div>
 
           <div >
             <InputWrapper label={"תוכן ההודעה"} className={styles.nameinput}>
-              <InputTextArea name={"תוכן ההודעה"} onChange={(e) => setMessage(e.target.value)} className={styles.inputaria} rows="5"
+              <InputTextArea name={"content"} onChange={(e) => setContent(e.target.value)} className={styles.inputaria} rows="5"
               />
             </InputWrapper>
           </div>

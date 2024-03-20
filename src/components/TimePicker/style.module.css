@@ -4,6 +4,7 @@
     border: 1px solid #DEE2E9;
     border-radius: 8px;
     color: #6B6B6B;
+    background-color: white;
     font-size: 14px;
     font-weight: 400;
     line-height: 34px;
@@ -13,40 +14,18 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding:0px, 8px, 0px, 8px;
-    
+    padding: 0px, 8px, 0px, 8px;
+    cursor: pointer;
 }
 
-
-input[type="time"]::-webkit-calendar-picker-indicator {
-    display: none;
-    
+.timePickerWrapper {
+    font-size: 16px
 }
 
-input[type="time"]:focus {
-   outline: none;
-   border: none;
-    
-}
-input[type="time"] {
-   outline: none;
-   border: none;
-   width: 76px;
-   height: 34px;
-   border: 1px solid #DEE2E9;
-   outline: none;
-   border: none;
-   color:  #000000;
-   font-size: 14px;
-   font-weight: 400;
-   line-height: 34px;
-   text-align: right
-    
-}
+/*  */
 
- 
 
-.text{
+/* .text {
     width: 76px;
     border: none;
     color: #6B6B6B;
@@ -54,8 +33,9 @@ input[type="time"] {
     font-weight: 400;
     line-height: 34px;
     text-align: right;
-}
-.icon{
+} */
+
+.icon {
     width: 24px;
     height: 24px;
 }

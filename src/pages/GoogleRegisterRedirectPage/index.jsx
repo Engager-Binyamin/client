@@ -19,7 +19,7 @@ export default function GoogleRegisterRedirectPage() {
                     <h1 className={styles.messageHeader}>
                         לא נמצאת במערכת שלנו
                     </h1>
-                    <p className={styles.additionalMessage}>כבר עבירים אותך לדף ההרשמה...</p>
+                    <p className={styles.additionalMessage}>כבר מעבירים אותך לדף ההרשמה...</p>
                 </div>
                 <Loading />
             </div>

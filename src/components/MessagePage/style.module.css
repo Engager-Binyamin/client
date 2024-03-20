@@ -34,4 +34,13 @@
 .send {
     margin-top: 20px;
     margin-right: auto;
+    display: flex;
+    gap: 36px;
+}
+
+.schedulePopUp {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
 }

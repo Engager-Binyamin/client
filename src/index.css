@@ -54,21 +54,39 @@ This will automatically apply the specified font family, size, weight, and color
 /* Style rule for main headings (h1) */
 
 h1 {
-  font-family: var(--header-font); /* Use this CSS variable for the h1 font family */
-  font-size: var(--header-font-size); /* Use this CSS variable for the h1 font size */
-  font-weight: var(--header-font-weight); /* Use this CSS variable for the h1 font weight */
-  color: var(--header-color); /* Use this CSS variable for the h1 text color */
+  font-family: var(--header-font);
+  /* Use this CSS variable for the h1 font family */
+  font-size: var(--header-font-size);
+  /* Use this CSS variable for the h1 font size */
+  font-weight: var(--header-font-weight);
+  /* Use this CSS variable for the h1 font weight */
+  color: var(--header-color);
+  /* Use this CSS variable for the h1 text color */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--main-color); /* Set thumb color */
-  border-radius: 5px; /* Round the corners */
-  border: 2px solid #f7f7f7; 
+  background-color: var(--main-color);
+  /* Set thumb color */
+  border-radius: 5px;
+  /* Round the corners */
+  border: 2px solid #f7f7f7;
 }
+
 ::-webkit-scrollbar-track {
-  background-color: #ffffff; 
-  border-radius: 10px; /* Round the corners */
-  }
-  ::-webkit-scrollbar {
-    width: 8px;
-    }
+  background-color: #ffffff;
+  border-radius: 10px;
+  /* Round the corners */
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+
+.react-datepicker__time-container {
+  width: unset;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+  width: unset;
+}

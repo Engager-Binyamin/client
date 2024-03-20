@@ -4,6 +4,7 @@
     border: 1px solid #DEE2E9;
     border-radius: 8px;
     color: #6B6B6B;
+    background-color: white;
     font-size: 14px;
     font-weight: 400;
     line-height: 34px;
@@ -13,33 +14,37 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding:0px, 8px, 0px, 8px;
-   }
-
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
-    
+    padding: 0px, 8px, 0px, 8px;
+    cursor: pointer;
 }
+
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+
+} */
+
 input[type="date"]:focus {
-   outline: none;
-    
+    outline: none;
+
 }
 
-.Calendar{
-    width: 87px; ;
+.Calendar {
+    width: 87px;
+    ;
     height: 34px;
     border: 1px solid #DEE2E9;
     outline: 'none';
-    color:  #000000;
+    color: #000000;
     font-size: 14px;
     font-weight: 400;
     line-height: 34px;
     text-align: right;
-    
-    
+
+
 }
-.text{
+
+.text {
     width: 87px;
     border: none;
     color: #6B6B6B;
@@ -48,7 +53,8 @@ input[type="date"]:focus {
     line-height: 34px;
     text-align: right;
 }
-.icon{
+
+.icon {
     width: 24px;
     height: 24px;
 }

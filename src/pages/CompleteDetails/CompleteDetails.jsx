@@ -10,10 +10,17 @@ import DataContext from '../../context/DataContext'
 import { useNavigate, useParams } from 'react-router'
 import getGoogleOAuthURL from '../../functions/loginWithGoogle'
 import Select from 'react-select';
+import { toast } from 'react-toastify'
 
 
 export default function CompleteDetails() {
-    const [formState, setFormState] = useState({})
+    const [formState, setFormState] = useState({
+        fullName: '', 
+        phone: '',   
+        occupation: '',
+        amountOfEmployees: null, 
+    });
+
     const [selectedOption, setSelectedOption] = useState(null);
     const [errorForm, setErrorForm] = useState({})
     const [render, setRender] = useState(false)
@@ -43,20 +50,23 @@ export default function CompleteDetails() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log("formSteteeeeeeeee", formState);
         try {
             const res = await api.put(`/user/update/${email}`, formState);
             if (res) {
-
-                setRender(true)
+                setRender(true);
                 // timeoutAndNavigate()
             }
-
         } catch (err) {
-            console.error({ err })
+            console.error(err);
+            if (err.response && err.response.data && err.response.data.msg) {
+                toast.error(err.response.data.msg);
+            } else {
+                toast.error("An error occurred while processing your request.");
+            }
         }
     }
-
+    
+    
 
     const handleChange = (event) => {
         const { name, value } = event.target;

@@ -1,0 +1,98 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  grid-column: span 2;
+  display: flex;
+  flex-direction: row;
+  /* border: 2px solid red; */
+  overflow-y: auto;
+  position: relative;
+}
+
+.circle {
+  border: 190px solid rgba(14, 157, 133, 0.103);
+  border-radius: 100%;
+  width: 720px;
+  height: 720px;
+  position: absolute;
+  top: -300px;
+  right: -300px;
+}
+
+.plan {
+  width: 50%;
+  padding: 7vw 5vw;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+  gap: 30px;
+}
+
+.payment {
+  width: 50%;
+}
+
+.list{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  list-style: none inside;
+}
+
+.details {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: -10px;
+}
+
+.plan h3 {
+  font-size: 45px;
+  font-family: var(--header-font);
+}
+
+.price {
+  font-size: 80px;
+  font-weight: 700;
+
+}
+
+.details span,
+.msgAmount span {
+  color: gray;
+  font-size: 20px;
+}
+
+.msgAmount {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 10px;
+  /* border-top: 1px solid gray; */
+}
+
+.msgAmount h4 {
+  font-size: 45px;
+  font-weight: 700;
+}
+
+.exstraDetails {
+  font-size: 22px;
+  /* margin-right: 25px; */
+  position: relative;
+  padding-right: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.exstraDetails::before {
+  content: ""; /* Unicode character for a filled circle */
+  width: 8px; /* Size of the dot */
+  height: 8px; /* Size of the dot */
+  border: 1px solid var(--main-color); /* Color of the filled circle */
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+}

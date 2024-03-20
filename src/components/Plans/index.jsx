@@ -15,6 +15,7 @@ export default function Plans() {
             });
     }, []);
     console.log(plansData);
+    
     function getIcon(value) {
         return value ? '✓' : '✗';
     }

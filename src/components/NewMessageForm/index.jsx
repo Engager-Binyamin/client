@@ -15,6 +15,7 @@ import { useState } from "react";
 import api from "../../functions/api";
 import { useParams } from "react-router";
 import { toast } from "react-toastify";
+import ScheduleInput from "../ScheduleInput";
 
 // Description :
 // Props : ____________ , _________
@@ -29,15 +30,18 @@ export default function NewMassageForm({ setPopUp, campId, getCamp }) {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
 
-  const [time, setTime] = useState();
-   const [date, setDate] = useState();
+  const [date, setDate] = useState(null)
+
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const submmit = { subject, content };
-
+    console.log(date);
+    console.log(date.getTime());
     setPopUp(false);
-    
+
     try {
       const response = await api.post(
         `/campaign/${campId}/msg`,
@@ -69,8 +73,8 @@ export default function NewMassageForm({ setPopUp, campId, getCamp }) {
             }
             type="text"
           ></InputWrapper>
-          <br />
-          <br />
+          {/* <br />
+          <br /> */}
           <InputWrapper
             label="הודעה"
             subLabel="זוהי  ההודעה שתשלח בתזמון הנבחר"
@@ -84,30 +88,18 @@ export default function NewMassageForm({ setPopUp, campId, getCamp }) {
             type="text"
           />
         </main>
-        <br />
+        {/* <br /> */}
 
 
         <div className={styles.timing}>
-      <InputWrapper label="תזמון"  
-      subLabel='הזמן הנכון לשלוח את ההודעה זו...' 
-      to = "pickers">
-        <div className={styles.pickers}>
-         <DatePicker
-         name={'date'}
-         date={date}
-         setDate={setDate}
+          <InputWrapper label="תזמון"
+            subLabel='הזמן הנכון לשלוח את הודעה זו...'
+            to="pickers">
+            <ScheduleInput setDate={setDate} />
+          </InputWrapper>
+        </div>
 
-            /> 
-         <TimePicker 
-          name={'time'}
-          time={time}
-          setTime={setTime}
-           />
-         </div>
-      </InputWrapper>
-         </div>
-       
-        
+
 
 
         <div className={styles.actions}>

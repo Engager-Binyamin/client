@@ -53,10 +53,10 @@ export default function SideBar() {
             </NavLink>
           </li>
           <li>
-              <NavLink to="myUsers">
+            <NavLink to="myUsers">
               כל הלקוחות שלי
               <Icon nameIcon={"leads"} nameColor={""} />
-              </NavLink>
+            </NavLink>
           </li>
           {!displaySearchBar && (
             <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
@@ -93,6 +93,24 @@ export default function SideBar() {
               <Icon nameIcon={'thumbsup'} nameColor={''} />
             </NavLink>
           </li>
+          {/* <li onClick={() =>
+            setPopUp(
+              {
+                title: 'התנתקות',
+                component: <ConfirmLogOut setPopUp={setPopUp} title={'התנתקות'} />
+              }
+            )}>
+            <NavLink>
+              התנתקות
+              <Icon nameIcon={"logout"} nameColor={""} />
+            </NavLink>
+          </li> */}
+          {/* <li>
+            <NavLink to="/myUsers">
+              כל הלקוחות שלי
+              <Icon nameIcon={"leads"} nameColor={""} />
+            </NavLink>
+          </li> */}
         </ul>
       </div>
       <div className={styles.lists}>
@@ -101,20 +119,20 @@ export default function SideBar() {
           <CampaignList searchTerm={searchTerm} campaignList={allCamps} />
         </div>
         <div className={styles.item}
-            onClick={() =>
-              setPopUp(
-                {
-                  title: "קמפיין חדש",
-                  component: <NewCampaigenForm setPopUp={setPopUp} getCamp={getAllCamps} />
-                }
-              )
-            }>
-            <Icon nameIcon={"pluscircle"} nameColor={"create"} />
-            <Button className="create" content="רשימה חדשה" />
+          onClick={() =>
+            setPopUp(
+              {
+                title: "קמפיין חדש",
+                component: <NewCampaigenForm setPopUp={setPopUp} getCamp={getAllCamps} />
+              }
+            )
+          }>
+          <Icon nameIcon={"pluscircle"} nameColor={"create"} />
+          <Button className="create" content="רשימה חדשה" />
+        </div>
       </div>
-      </div> 
       <div className={styles.userContainer}>
-      <UserProfile/>
+        <UserProfile />
       </div>
     </div>
   );

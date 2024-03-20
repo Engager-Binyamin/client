@@ -19,7 +19,7 @@ export default function PopUp() {
             }}
           >
 
-            
+
             <div className={styles.top}>
               <div>
                 <h1>{PopUp.title}</h1>

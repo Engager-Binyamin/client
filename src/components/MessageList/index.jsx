@@ -23,13 +23,14 @@ export default function MessageList({ searchTerm }) {
     <div className={styles.messageList}>
       {Object.entries(organizedMessages).map(([date, messages], index) => (
         <div key={index} className={styles.messages}>
-          <div className={styles.date}>{date}</div>
+          {/* <div className={styles.date}>{date}</div> */}
           <ul className={styles.unorderedList}>
             {searchTerm.trim() !== "" ?
               messages.filter((message) =>
                 message.subject?.toLowerCase().includes(searchTerm.trim()?.toLowerCase())
               ).map((message, messageIndex) => (
                 <li key={messageIndex}>
+                  <div className={styles.date}>{date}</div>
                   <MessageItem
                     campaignId={campaign._id}
                     msgId={message._id}
@@ -41,6 +42,7 @@ export default function MessageList({ searchTerm }) {
               ))
               : messages.map((message, messageIndex) => (
                 <li key={messageIndex}>
+                  <div className={styles.date}>{date}</div>
                   <MessageItem
                     campaignId={campaign._id}
                     msgId={message._id}

@@ -55,7 +55,7 @@ export default function LeadsTable({ filterdLeads = [], heads = []
         if (value === '') {
             delete newFilters[key];
         }
-    
+
         setFilters(newFilters);
     };
 
@@ -148,10 +148,12 @@ export default function LeadsTable({ filterdLeads = [], heads = []
                                     {lead[h.title] ? "פעיל" : "לא פעיל"}
                                 </td>
                             ) : h.title === 'joinDate' ? (
-                                <td key={h.title}>{formatDateTime(lead[h.title])[0]}, {formatDateTime(lead[h.title])[1]}</td>
-                            ) : (
-                                <td id={styles.regularTd} key={h.title}>{lead[h.title]}</td>
-                            )
+                                <td key={h.title}>{formatDateTime(lead[h.title])[0]}</td>
+                            ) :
+                                h.title === "avatar" ? (<td className={styles.avatarTd} key={h.title}><img className={styles.avatar} src={lead[h.title]} /></td>
+                                ) : (
+                                    <td id={styles.regularTd} key={h.title}>{lead[h.title]}</td>
+                                )
                         ))}
                     </tr>
                 ))}

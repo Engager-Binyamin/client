@@ -9,6 +9,7 @@ import formatDate from '../../functions/DateFormat'
 import DataContext from "../../context/DataContext";
 
 import Button from '../../components/Button'
+import api from '../../functions/api'
 // Description: This component serves as a user profile page. It is designed to display user information, including first fullName, last fullName, email, phone number, registration date, and active status indicator.
 //Use of this component should pass real user data from the DB as props.
 // Props:
@@ -28,9 +29,9 @@ export default function LeadInfoPage() {
   // TODO: לדאוג לרנדר מחדש את הקומפוננטה כל פעם שפרטי הליד משתנים אחרי שעורכים אותם
 
   const { leadId } = useParams();
-  const { campaign,getCamp } = useCampaign();
+  const { campaign, getCamp } = useCampaign();
   const { setPopUp } = useContext(DataContext);
-
+  const { user } = useContext(DataContext)
   const [lead, setLead] = useState({})
 
   useEffect(() => {
@@ -44,41 +45,62 @@ export default function LeadInfoPage() {
   //   }
   // }, [])
 
-  const { fullName, phone, email, notes, _id, extra={}, joinDate, isActive } = lead || {};
+  const { fullName, phone, email, notes, _id, extra = {}, joinDate, isActive } = lead || {};
   const signUpDate = formatDate(joinDate)
   const [isEdit, setIsEdite] = useState(false)
 
   const handleEditClick = () => {
     setIsEdite(true)
   }
+
+  let data = { userId: user._id }
+  const handleTrash = async (leadPhone) => {
+    try {
+      await api.del(`campaign/lead/${leadPhone}/all`, data).then((res) => {
+        getCamp();
+        console.log(res);
+      }).catch((error) => {
+        console.error('Error updating title:', error);
+      });
+    } catch (error) {
+      console.error('Error handling trash:', error);
+    }
+  };
+  
   return (
     <div className={styles.layout}>
       <div className={styles.info}>
         <div className={styles.container}>
           <div className={styles.details}>
-            {name}
+            {fullName}
             <div className={styles.isActive}>
               <div className={isActive ? styles.greenDot : styles.redDot}></div>
               <span>{isActive ? 'פעיל/ה' : 'לא פעיל/ה'}</span>
             </div>
           </div>
-          <div onClick={
-            () =>
-              setPopUp({
-                title: "עריכת פרטי נרשמים",
-                component: (
-                  <UpdateAndAddLead
-                    setPopUp={setPopUp}
-                    campaign={campaign}
-                    details={{ fullName, email, phone, notes, leadId: _id, extra}}
-                    isEdit={true}
-                    getCamp={getCamp}
-                  />
-                )
-              })
-          }
-            className={styles.edit}><Icon nameIcon={'writing'}
-              nameColor={''} />  </div>
+          <div className={styles.buttons}>
+            <div onClick={
+              () =>
+                setPopUp({
+                  title: "עריכת פרטי נרשמים",
+                  component: (
+                    <UpdateAndAddLead
+                      setPopUp={setPopUp}
+                      campaign={campaign}
+                      details={{ fullName, email, phone, notes, leadId: _id, extra}}
+                      isEdit={true}
+                      getCamp={getCamp}
+                    />
+                  )
+                })
+            }
+              className={styles.edit}><Icon nameIcon={'writing'}
+                nameColor={''} />  </div>
+            <div className={styles.trash} onClick={() => handleTrash(phone)}><Icon nameIcon={"trash"} /></div>
+            {/* <div className={styles.trash} onClick={() => isActive ? !isActive : null}><Icon nameIcon={"trash"} /></div> */}
+          </div>
+
+
         </div>
         <div className={styles.detailsFrame}>
           <div className={styles.allFields}>

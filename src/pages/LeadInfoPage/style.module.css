@@ -1,7 +1,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Secular+One&display=swap');
 
-  
+
   /* TODO: remove the roots from here */
   :root {
 
@@ -11,7 +11,7 @@
     --border-box-color: #F3F3F5;
   }
 
-  .layout{
+  .layout {
     padding: 2rem;
     height: 100%;
     overflow-y: auto;
@@ -49,6 +49,11 @@
   justify-content: center; */
   }
 
+  .buttons {
+    display: flex;
+    flex-direction: row;
+  }
+
   .isActive {
     display: flex;
     flex-direction: row;
@@ -61,9 +66,15 @@
 
   .edit {
     font-size: 18px;
+    margin: 10px;
   }
 
   .edit:hover {
+    cursor: pointer;
+  }
+
+  .trash {
+    margin: 10px;
     cursor: pointer;
   }
 
@@ -83,7 +94,7 @@
     margin-left: 5px;
   }
 
-  .allFields{
+  .allFields {
     position: relative;
     width: 100%;
     padding: 30px 100px 60px 100px;
@@ -94,6 +105,7 @@
     border-radius: 8px;
     border: 1px solid var(--border-box-color);
   }
+
   .detailsFrame {
     /* margin: auto; */
     width: 100%;
@@ -105,14 +117,14 @@
     gap: 20px;
   }
 
-.telAndEmail{
-  display: flex;
-  flex-direction: row;
+  .telAndEmail {
+    display: flex;
+    flex-direction: row;
 
 
-}
+  }
 
-  .infoCol{
+  .infoCol {
     width: fit-content;
     display: flex;
     flex-direction: column;
@@ -120,7 +132,7 @@
     gap: 20px;
   }
 
-  .infoFullCol{
+  .infoFullCol {
     /* background:red; */
     width: 100%;
   }
