@@ -55,18 +55,22 @@ export default function LeadInfoPage() {
 
   let data = { userId: user._id }
   const handleTrash = async (leadPhone) => {
-    try {
-      await api.del(`campaign/lead/${leadPhone}/all`, data).then((res) => {
-        getCamp();
-        console.log(res);
-      }).catch((error) => {
-        console.error('Error updating title:', error);
-      });
-    } catch (error) {
-      console.error('Error handling trash:', error);
-    }
-  };
-  
+    //TODO - confirmation in popup like refresh webHook
+    let confirmation = confirm('בטוח?')
+    if (confirmation) {
+      try {
+        await api.del(`campaign/lead/${leadPhone}/all`, data).then((res) => {
+          getCamp();
+          console.log(res);
+        }).catch((error) => {
+          console.error('Error updating title:', error);
+        });
+      } catch (error) {
+        console.error('Error handling trash:', error);
+      }
+    };
+  }
+
   return (
     <div className={styles.layout}>
       <div className={styles.info}>
@@ -87,7 +91,7 @@ export default function LeadInfoPage() {
                     <UpdateAndAddLead
                       setPopUp={setPopUp}
                       campaign={campaign}
-                      details={{ fullName, email, phone, notes, leadId: _id, extra}}
+                      details={{ fullName, email, phone, notes, leadId: _id, extra }}
                       isEdit={true}
                       getCamp={getCamp}
                     />
@@ -121,13 +125,13 @@ export default function LeadInfoPage() {
                   <div className={styles.content}>{email}</div>
                 </div>
               </div>
-              <div  className={styles.detailsFrame}>
-              {Object.keys(extra).map((item, index) => {
-                return <div key={index} className={styles.infoBlock}>
+              <div className={styles.detailsFrame}>
+                {Object.keys(extra).map((item, index) => {
+                  return <div key={index} className={styles.infoBlock}>
                     <div className={styles.miniTitle}>{extra[item].he}</div>
                     <div className={styles.content}>{extra[item].value}</div>
                   </div>
-              })}
+                })}
               </div>
               <div className={styles.infoFullCol}>
                 <div>
