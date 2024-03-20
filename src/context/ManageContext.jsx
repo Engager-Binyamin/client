@@ -38,20 +38,23 @@ export function ManageContext({ children }) {
       )
     }
   }, [user._id])
-  const [queueJob, setQueueJob] = useState()
-  useEffect(() => {
-    if (socket) {
-      socket.on("connect", () => {
-        console.log("Connected to server of whatsapp")
-        socket.emit("queue")
-      })
+const [queueJob, setQueueJob] = useState() 
+  useEffect(()=>{
+    if(socket){
+      socket.on('connect', () => {
+        console.log('Connected to server of whatsapp');
+        socket.emit('queue')
+      });
       socket.on(`queue`, (queue) => {
-        console.log("🌹🌹🌹")
-        console.log(queue)
         setQueueJob(queue)
       })
     }
-  }, [socket])
+    
+    return ()=>{
+        if(socket)
+        socket.disconnect()
+      }
+    },[socket])
 
   const getAllCamps = () => {
     api.get(`/campaign`).then((res) => {
