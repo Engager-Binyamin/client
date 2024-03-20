@@ -6,7 +6,6 @@ import api from '../../functions/api';
 import styles from './style.module.css';
 import DataContext from '../../context/DataContext';
 import formatDateTime from '../../functions/timeDateFormat';
-import Plans from '../../components/Plans';
 import { useNavigate } from 'react-router-dom';
 export default function Dashboard() {
   const [data, setData] = useState({
