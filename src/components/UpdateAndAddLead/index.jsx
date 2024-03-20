@@ -24,11 +24,21 @@ export default function UpdateAndAddLead({ details = {}, campaign, getCamp, isEd
     //     notes: details ? details.notes : ''
     // })
 
-console.log(newData.extra);
-    const handleChange = (e, isPhone) => {
+    console.log(newData.extra);
+    const handleChange = (e, isPhone, extraKey) => {
         let { name, value } = e.target
-        if (isPhone && value == details.phone) return;
-        setNewData(old => ({ ...old, [name]: value }))
+        if (isPhone && value === details.phone) return;
+        if (extraKey) {
+            setNewData(prevData => ({
+                ...prevData,
+                extra: {
+                    ...prevData.extra,
+                    [extraKey]: { ...prevData.extra[extraKey], value }
+                }
+            }));
+        } else {
+            setNewData(prevData => ({ ...prevData, [name]: value }));
+        }
     }
 
 
@@ -41,6 +51,7 @@ console.log(newData.extra);
 
     const handleOnSubmit = async (e) => {
         e.preventDefault()
+        console.log({newData});
         if (!isValidIsraeliPhoneNumber(newData.phone)) {
             setErrorState('מספר הטלפון לא תקין ')
         } else {
@@ -61,17 +72,24 @@ console.log(newData.extra);
 
     return <div className={styles.contanier} >
         <h1>{newData.fullName}</h1>
-        <form onSubmit={handleOnSubmit}  className={styles.form} >
+        <form onSubmit={handleOnSubmit} className={styles.form} >
             <div className={styles.formContent}>
                 <InputWrapper label={'שם מלא'} children={<InputText name='fullName' value={newData.fullName} required={true} onChange={handleChange} />} />
                 <InputWrapper label={'טלפון'} children={<InputText name='phone' value={newData.phone} required={true} onChange={(e) => handleChange(e, true)} />} />
                 {errorState && <div className={styles.error}>{errorState}</div>}
                 <InputWrapper label={'אמייל'} children={<InputText name='email' value={newData.email} onChange={handleChange} type={"email"} />} />
                 {details?.extra &&
-                    Object.entries(newData.extra).map((ex, i) =>{
-console.log('ex:', newData.extra[ex[0]]);
-                        <InputWrapper key={i} label={ex[1].he} children={<InputText name={ex[0]} value={ex[1].value} onChange={handleChange} type={"text"} />} />
-                    }
+                    Object.entries(newData.extra).map((ex, i) =>
+                        <InputWrapper
+                            key={i}
+                            label={ex[1].he}
+                            children={<InputText
+                                name={ex[0]}
+                                value={newData.extra[ex[0]].value}
+                                onChange={(e) => handleChange(e, false, ex[0])}
+                                type={"text"}
+                            />}
+                        />
                     )
                 }
                 <InputWrapper label={'הערות'} children={<InputTextArea name='notes' style={{ width: "100%" }} value={newData.notes} onChange={handleChange} />} />
