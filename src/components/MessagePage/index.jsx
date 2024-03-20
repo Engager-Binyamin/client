@@ -19,7 +19,9 @@ export default function MessagePage() {
     // TODO: לחבר את שליחת ההודעה לווטסאפ
     // TODO: "להסיר את כפתור השלח במידה ואין אנשים שלא קיבלו את ההודעה או להפוך אותו ל"שלח מחדש
 
-    const { PopUp, setPopUp } = useContext(DataContext)
+    const { PopUp, setPopUp, user } = useContext(DataContext)
+
+
 
     const [date, setDate] = useState(null)
 
@@ -47,9 +49,19 @@ export default function MessagePage() {
     let timeSend = formatTimeSchedule(date || new Date())
 
 
-    const schedulingButton = () => {
-        setPopUp(false)
-        //TODO: ADD LOGIC OF UPDATING THE TIME TO SEND IN THE SERVER
+    const schedulingButton = async (date, userId) => {
+        try {
+            const miliSecondsDate = new Date(date).getTime()
+            console.log(miliSecondsDate);
+            setPopUp(false)
+            const response = await api.put(`campaign/${campaign._id}/msg/${messageId}/update-queue`, miliSecondsDate)
+            if (response.success === true) {
+                const res = await axios.post(`http://localhost:3000/whatsupserver/update/jobs`, { userId })
+                console.log(res.data);
+            }
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     return (
@@ -98,7 +110,7 @@ export default function MessagePage() {
                             <form className={styles.schedulePopUp} onSubmit={(e) => e.preventDefault()}><ScheduleInput setDate={setDate} />
                                 <Button
                                     content='בחר זמן'
-                                    onClick={() => schedulingButton()}
+                                    onClick={() => schedulingButton(date, user._id)}
                                 />
                             </form>
 
