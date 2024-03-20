@@ -12,13 +12,14 @@ import DataContext from "../../context/DataContext";
 export default function FeedBack() {
   const { user, setUser } = useContext(DataContext)
   const [content, setContent] = useState("");
+  const [title, setTitle] = useState("");
   const nav = useNavigate()
 
   const handelSubmitNewFeedBack = async (e) => {
     e.preventDefault();
     try {
       const response = await api.post(
-        `/feedback/${user}`, content);
+        `/feedback/${user}`,title, content);
       toast.success(response && "נשלח בהצלחה!");
     } catch (Error) {
       console.error("Error:", Error);

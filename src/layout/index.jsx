@@ -1,43 +1,49 @@
-import React, { useContext, useEffect } from "react"
-import styles from "./style.module.css"
-import { Outlet, Route, Routes } from "react-router"
-import LoginPage from "../pages/LoginPage"
-import { ManageContext } from "../context/ManageContext"
-import Test from "../tests/A_MainTest"
-import PopUp from "../components/PopUp"
-import ForgetPassword from "../components/ForgetPassword"
-import Register from "../components/Register"
-import DashboardLayout from "./DashboardLayout"
-import CampaignPage from "../pages/CampaignPage"
-import QRCodeComponent from "../components/QRCodeComponent"
-import PaymentPage from "../pages/PaymentPage"
-import LeadsTab from "../components/LeadsTab"
-import LeadInfoPage from "../pages/LeadInfoPage"
-import MsgTab from "../components/MsgTab"
-import MessagePage from "../components/MessagePage"
-import WebHook from "../components/WebHook"
-import WebHookTab from "../components/WebHookTab"
-import WebHookPage from "../components/WebHookPage"
-import CompleteDetails from "../pages/CompleteDetails/CompleteDetails"
-import RedirectGoogle from "../pages/RedirectGoogle/RedirectGoogle"
-import ActivateAccount from "../pages/ActivateAccount"
-import MyLeads from "../components/MyLeads"
-import AllLeads from "../components/AllLeads"
-import AllActiveLeads from "../components/AllActiveLeads"
-import AllInactiveLeads from "../components/AllInactiveLeads"
-import ChangePasswordPage from "../pages/ChangePasswordPage"
-import FeedBack from "../components/FeedBack"
-import GoogleRegisterRedirectPage from "../pages/GoogleRegisterRedirectPage"
-import api from "../functions/api"
-import DataContext from "../context/DataContext"
-import Dashboard from "../pages/Dashboard"
-import Plans from "../components/Plans"
-import SettingsTab from "../components/SettingsTab"
-import CheckOut from "../pages/CheckOut"
-import MyUsers from "../components/MyUsers"
-import AllUsers from "../components/AllUsers"
+import React, { useContext, useEffect } from 'react'
+import styles from './style.module.css'
+import { Outlet, Route, Routes } from 'react-router';
+import LoginPage from '../pages/LoginPage';
+import { ManageContext } from '../context/ManageContext';
+import Test from '../tests/A_MainTest';
+import PopUp from '../components/PopUp';
+import ForgetPassword from '../components/ForgetPassword';
+import Register from '../components/Register';
+import DashboardLayout from './DashboardLayout';
+import CampaignPage from '../pages/CampaignPage';
+// import QRCodeComponent from '../components/Setting';
+import PaymentPage from '../pages/PaymentPage';
+import LeadsTab from '../components/LeadsTab';
+import LeadInfoPage from '../pages/LeadInfoPage';
+import MsgTab from '../components/MsgTab';
+import MessagePage from '../components/MessagePage';
+import WebHook from '../components/WebHook';
+import WebHookTab from '../components/WebHookTab';
+import WebHookPage from '../components/WebHookPage';
+import CompleteDetails from '../pages/CompleteDetails/CompleteDetails';
+import RedirectGoogle from '../pages/RedirectGoogle/RedirectGoogle';
+import ActivateAccount from '../pages/ActivateAccount';
+import MyLeads from '../components/MyLeads';
+import AllLeads from '../components/AllLeads';
+import AllActiveLeads from '../components/AllActiveLeads';
+import AllInactiveLeads from '../components/AllInactiveLeads';
+import ChangePasswordPage from '../pages/ChangePasswordPage';
+import FeedBack from '../components/FeedBack';
+import GoogleRegisterRedirectPage from '../pages/GoogleRegisterRedirectPage';
+// import Plans from '../components/Plans';
+import Dashboard from '../pages/Dashboard';
+import MsgQueue from '../components/msgQueue';
+import Icon from '../components/Icon';
+import Plans from '../components/Plans';
+import CheckOut from '../tests/Israel';
+import MyUsers from '../components/MyUsers';
+import AllUsers from '../components/AllUsers';
+import QRCodeComponent from '../components/QRCodeComponent';
+import SettingsTab from '../components/SettingsTab';
+// import Plans from '../components/Plans';
 
 export default function Layout() {
+
+  let arr = [{ campaignName: "בריכת שחייה", userName: "מרים פוני", time: "14.10.24 , 13:49" }, { campaignName: "חדר כושר", userName: "גילה שוראקי", time: "19.03.23 , 17:12" }]
+
   return (
     <div className={styles.layout}>
       <ManageContext>
@@ -128,6 +134,11 @@ export default function Layout() {
                 }
               />
             </Route>
+            <Route path='settings' element={<QRCodeComponent />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            {/* <Route path='msgqueue' element={<MsgQueue arr={arr} />} /> */}
+            <Route path='feedback' element={<FeedBack />} />
+            <Route path='payment' element={<PaymentPage />} />
             <Route
               path="settings"
               element={
@@ -154,6 +165,7 @@ export default function Layout() {
         </Routes>
         <Test />
         <PopUp />
+        <MsgQueue arr={arr}/>
       </ManageContext>
     </div>
   )

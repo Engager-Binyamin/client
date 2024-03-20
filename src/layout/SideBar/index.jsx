@@ -58,6 +58,12 @@ export default function SideBar() {
               <Icon nameIcon={"leads"} nameColor={""} />
             </NavLink>
           </li>
+          <li>
+            <NavLink to="msgqueue">
+              תור עבודה
+              <Icon nameIcon={"message"} nameColor={""} />
+            </NavLink>
+          </li>
           {!displaySearchBar && (
             <li onClick={() => setDisplaySearchBar(!displaySearchBar)}>
               <span>
