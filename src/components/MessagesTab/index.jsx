@@ -13,7 +13,7 @@ export default function MessagesTab() {
   return (<>
   <div>
       <PopUp isOpen={isOpen} setPopUp={setPopUp} title={"הודעה חדשה"}>
-        <NewMessageForm setPopUp={setPopUp} />
+        <NewMessageForm campaign={campaign} setPopUp={setPopUp} />
       </PopUp>
   </div>
     <div className={styles.MessagesTab}>

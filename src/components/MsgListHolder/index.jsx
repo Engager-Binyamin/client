@@ -17,7 +17,7 @@ export default function MsgListHolder() {
 
   const [searchTerm, setSearchTerm] = useState('')
   const {campId} =useParams()
-const { getCamp} = useCampaign()
+const {getCamp, campaign} = useCampaign()
   const { PopUp, setPopUp } = useContext(DataContext);
 
   return (
@@ -29,7 +29,7 @@ const { getCamp} = useCampaign()
       <span className={styles.newMsg}>
         <div className={styles.item} onClick={() => setPopUp({
           title:"הודעה חדשה",
-          component:<NewMessageForm setPopUp={setPopUp} campId={campId} getCamp={getCamp} />
+          component:<NewMessageForm setPopUp={setPopUp} campId={campId} campaign={campaign} getCamp={getCamp} />
         })}>
           <Icon nameIcon={'pluscircle'} nameColor={'create'} />
           <Button className="create"
